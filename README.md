@@ -1,7 +1,7 @@
 # Assistant Personnel dans une maison connectée (domotique) <br> Personal assistant in a connected house (Automation)
-*Dernière modification : 23/01/2017 - 12h30*
+*Dernière modification : 23/01/2017 - 22h00*
 <br>
-*Last update : 23/01/2016 - 12H30*
+*Last update : 23/01/2016 - 22H00*
 
 - Français
 - English
