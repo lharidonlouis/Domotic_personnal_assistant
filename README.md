@@ -4,10 +4,10 @@
 	<em>Last update : 23/01/2016 - 12H30 </em>
 </p>
 
-<ul>
+<ol>
 	<li>Français</li>
 	<li>English</li>
-</ul>
+</ol>
 
 
 <h1>Français</h1>
