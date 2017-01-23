@@ -271,6 +271,6 @@ Our software interface has to handle a certain number of functionalities to allo
 
 ##Changelog
 - 23/01/2017 - 11h30 : GitHub creation
-- 23/01/2017 - 12h00 : Eclipse project presentation
+- 23/01/2017 - 12h00 : Eclipse project creation
 - 23/01/2017 - 21h30 : adding of README.txt
 
