@@ -3,9 +3,9 @@
 <br>
 *Last update : 23/01/2016 - 22H00*
 
-- Français
-- English
-- Changelog
+- [Français](https://github.com/lharidonlouis/Domotic_personnal_assistant#français)
+- [English](https://github.com/lharidonlouis/Domotic_personnal_assistant#english)
+- [Changelog](https://github.com/lharidonlouis/Domotic_personnal_assistant#changelog)
 
 ##Français
 
