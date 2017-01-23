@@ -5,6 +5,7 @@
 
 - Français
 - English
+- Changelog
 
 ##Français
 
@@ -267,4 +268,9 @@ Our software interface has to handle a certain number of functionalities to allo
 		- Assistant vocal modelling (optional)
 	- User's action management
 	- Adding new connected objects possibility
+
+##Changelog
+- 23/01/2017 - 11h30 : GitHub creation
+- 23/01/2017 - 12h00 : Eclipse project presentation
+- 23/01/2017 - 21h30 : adding of README.txt
 
