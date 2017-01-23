@@ -28,10 +28,10 @@ L’équipe est composée de 3 personnes : Louis (CMI), Valentin (MI) et Julien
 
 Calendrier du projet :
 
-- 6 Mars 2017 : présentation brève de notre projet (en 180 secondes)
-- 27 Mars 2017: pré-soutenance (objectif : projet fini à 60-70%)
-- 20 Mai 2017: rendu final du projet (projet + rapport + diaporama)
-- 22-23 Mai 2017: soutenance orale du projet 
+- [ ] 6 Mars 2017 : présentation brève de notre projet (en 180 secondes)
+- [ ] 27 Mars 2017: pré-soutenance (objectif : projet fini à 60-70%)
+- [ ] 20 Mai 2017: rendu final du projet (projet + rapport + diaporama)
+- [ ] 22-23 Mai 2017: soutenance orale du projet 
 
 ####Environnement de travail
 
