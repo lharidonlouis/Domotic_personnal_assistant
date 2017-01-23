@@ -129,7 +129,7 @@ L’interface de notre logiciel doit comprendre un certains nombres de fonctionn
 		- Signification de l’état de l’appareil
 			- L’appareil est opérationnel
 			- L’appareil est utilisé par le propriétaire
-	- L’assistant communique à l’utilisateur à propos de l’appareil
+			- L’assistant communique à l’utilisateur à propos de l’appareil
 - Affichage et simulation d’un dashboard
 	- Simulation de l’interaction utilisateur / assistant
 		- Reconnaissance vocale (optionnel)
@@ -139,8 +139,132 @@ L’interface de notre logiciel doit comprendre un certains nombres de fonctionn
 
 ##English
 
+
 ###Project presentation
+
+####Context
+
+We were all interested about this project because it's new and innovating. Indeed, it is about the automation domain, a very interesting open subject. We all had a certain number of ideas and hopes  for this project, which pushed us to work put in in first choice.
+
+###The project
 
 This project is about creating a personal assistant in an entirely connected house with its user. The user will communicate with her via interactions (with a user/assistant interface). This assistant is able to propose actions such as clean the house, turn off the light or the TV. Being connected with the entire house, it can report object's status, every problem or information about this last to inform its user. The assistant has for goal to improve the life, by proposing actions such as wish a happy birthday with personalized messages, checking the calendar. Even small actions such as meteorologic datas, or today planning are coming to the user at his wake up to allow him to organize his day the best way possible and to make him win in efficiency.
 
 The personal assistant is a really too, very promising and undefined number of possible actions.
+
+####The organisation
+
+We are 3 members in the team : Louis (CMI), Valentin (MI) et Julien (MI). 
+
+Project calendar :
+
+- [ ] 2017, March the 6th : brief presentation of our project (in 180 seconds)
+- [ ] 2017, March the 27th : pre-oral (objective : Project finished about 60-70%)
+- [ ] 2017, May the 20th : final return of the project (project + report + slides)
+- [ ] 2017, May the 23rd : Oral
+
+####Environnement de travail
+
+For this project we used different softwares:
+
+- Architecture modeling for the house plan
+- Eclipse for development 
+- Word processing program and Slide Show Program for orals and report
+- Dropbox for collaborative work
+- Git for collaborative devloppment 
+
+###Waited delivery
+For this project : the following documents are waited :
+
+- Executable file
+- Source code
+- Installation manuel of the software
+	- In this manuel we will describe all the necessaries steps to correctly install this software
+- User manuel of the software
+	- In this manuel we will list 
+		- The software's functionalities
+		- How to use them
+		- The personalization options
+
+###Project objectives and specifications
+
+####Software's functionalities
+
+Our project consist in an personal assistant creation allowing the house's owner to handle diverses interactions. For this, we will need some functionalities:
+
+- House simulation
+	- Creation of connected objects
+		- Fridge
+			- Listing of available food  
+				- Buying if necessary
+			- Open door alert
+			- Temperature problem alert
+		- Television
+			- Automation
+			- Connection to Sofa
+				- Extinction of the TV or automated pausing
+		- Vacuum
+			- Automation of launching 
+			- If dirt detection, propose a cleaning
+		- Bathroom radiator
+			- Automation of launching based on wake up hour
+		- Lights
+			- Automations
+			- Varied athmosphere
+				- Social aspect
+				- TV ignition
+		- Bed
+			- Falling asleep and waking up detection
+				- Morning briefing
+				- Handle devices launching
+		- Sofa
+			- User presence detection 
+			- Movement and falling asleep detection
+				- Health recommendations
+				- TV extinction
+		- Car (optional)
+			- Automation of launching
+			- Automation of GPS
+		- Door (optional)
+			- Visitor detection
+	- Possibility for the user to (optional)
+		- Create a new connected device
+			- Define its actions
+			- Define its relations with the assistant
+- User simulation
+	- Daily task simulation
+		- Schedule simulation
+		- Social aspects simulation
+		- Interaction with the house simulations
+		- Interaction with the assistant simulation
+- Creation of a personal assistant
+	- User/assistant interface simulation
+	- Connected devices' informations centralization
+		- Device's control
+		- Devices' information recuperation
+		- Devices' information to User transmission
+		- Automation, if handled, of the devices, based on the user behavior
+	- User's information centralization
+		- Socials aspects management 
+		- Schedule management
+		- User's command management
+		- Weather management (optional)
+
+####Interface
+
+Our software interface has to handle a certain number of functionalities to allow the good working of the previous functionalities.
+
+- Displaying and simulation of a house
+	- Connected devices' environment simulation
+		- Object positionnant
+		- Object's status signification
+			- The device if operational
+			- The device is used by the owner
+			- The assistant communicate to the user about the device
+- Displaying and simulation of a  dashboard
+	- User/assistant interaction's simulation 
+		- Vocal recognition (optional)
+		- Assistant vocal modelling (optional)
+	- User's action management
+	- Adding new connected objects possibility
+
