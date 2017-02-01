@@ -9,11 +9,11 @@ public class Position {
 		this.posY = posY;
 	}
 	
-	public String getPosX(){
+	public String getposX(){
 		return posX;
 	}
 	
-	public String getPosY(){
+	public String getposY(){
 		return posY;
 	}
 	
