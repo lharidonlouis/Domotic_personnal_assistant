@@ -1,4 +1,4 @@
-package OBJECT;
+package objects;
 
 public class Position {
 
