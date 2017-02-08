@@ -26,7 +26,6 @@ public class Object {
 		try {
 			FileReader fileReader = new FileReader(new File("../../object.txt"));
 			BufferedReader br = new BufferedReader(fileReader);
-			
 			br.close();
 			fileReader.close();
 		} catch (FileNotFoundException e) {
