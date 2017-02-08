@@ -9,5 +9,6 @@ public class Object {
 		
 	}
 	
+	public void change_status(String caract, )
 	
 }
