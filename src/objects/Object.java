@@ -25,7 +25,7 @@ public class Object {
 	public void readObject(){
 		try {
 			FileReader fileReader = new FileReader(new File("../../object.txt"));
-			BufferedReader br = new BufferedReader(fileReader); 
+			BufferedReader br = new BufferedReader(fileReader);
 			br.close();
 			fileReader.close();
 		} catch (FileNotFoundException e) {
