@@ -12,7 +12,7 @@ public class Object {
 	Status status;
 	
 	public Object(){
-		
+		readObject() ;
 	}
 	
 	public void change_status(String var){
@@ -24,10 +24,11 @@ public class Object {
 	}
 	public void readObject(){
 		try {
-			FileReader fileReader = new FileReader(new File("../../object.txt"));
+			FileReader fileReader = new FileReader(new File("../object.txt"));
 			BufferedReader br = new BufferedReader(fileReader);
 			br.close();
 			fileReader.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
