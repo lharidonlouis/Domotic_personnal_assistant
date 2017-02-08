@@ -6,12 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Object {
+public class Obj {
 	String name;
 	Position pos;
 	Status status;
 	
-	public Object(){
+	public Obj(){
 		
 	}
 	
