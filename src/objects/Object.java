@@ -9,6 +9,12 @@ public class Object {
 		
 	}
 	
-	public void change_status(String caract, )
+	public void change_status(String var){
+		this.status.switchStatus(var);
+	}
+	
+	public void interact(){
+		
+	}
 	
 }
