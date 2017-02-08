@@ -10,11 +10,9 @@ public class Status {
 	
 	public void switchStatus (String var) {
 		switch (var) {
-
 			case "on":
 				on= !on ;
 				break ; 
-				
 			case "detected" :
 				detected = !detected ;
 				break ;
