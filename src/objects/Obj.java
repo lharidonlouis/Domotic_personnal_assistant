@@ -6,13 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Object {
+public class Obj {
 	String name;
 	Position pos;
 	Status status;
 	
-	public Object(){
-		readObject() ;
+	public Obj(){
+		
 	}
 	
 	public void change_status(String var){
@@ -24,11 +24,10 @@ public class Object {
 	}
 	public void readObject(){
 		try {
-			FileReader fileReader = new FileReader(new File("../object.txt"));
+			FileReader fileReader = new FileReader(new File("../../object.txt"));
 			BufferedReader br = new BufferedReader(fileReader);
 			br.close();
 			fileReader.close();
-			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
