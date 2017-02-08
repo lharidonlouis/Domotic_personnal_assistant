@@ -1,7 +1,7 @@
 # Assistant Personnel dans une maison connectée (domotique) <br> Personal assistant in a connected house (Automation)
-*Dernière modification : 23/01/2017 - 22h00*
+*Dernière modification : 8/02/2017 - 11H00*
 <br>
-*Last update : 23/01/2016 - 22H00*
+*Last update : 02/08/2017 - 11H00*
 
 - [Français](https://github.com/lharidonlouis/Domotic_personnal_assistant#français)
 - [English](https://github.com/lharidonlouis/Domotic_personnal_assistant#english)
@@ -274,3 +274,4 @@ Our software interface has to handle a certain number of functionalities to allo
 - 23/01/2017 - 12h00 : Eclipse project creation
 - 23/01/2017 - 21h30 : adding of README.txt
 - 25/01/17 - 11h00 : adding julien
+- 08/02/17 - 11h00 : Creating datas objects and classes
