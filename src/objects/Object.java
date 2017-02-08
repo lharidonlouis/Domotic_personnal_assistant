@@ -14,7 +14,7 @@ public class Object {
 	}
 	
 	public void interact(){
-		
+	 	
 	}
 	
 }
