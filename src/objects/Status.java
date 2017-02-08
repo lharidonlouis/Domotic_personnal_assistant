@@ -10,7 +10,7 @@ public class Status {
 	
 	public void switchStatus (String var) {
 		switch (var) {
-		
+
 			case "on":
 				on= !on ;
 				break ; 
@@ -21,8 +21,8 @@ public class Status {
 			case "problem" :
 				problem = !problem ;
 				break ;
-			
 			default :
+				break;
 		}
 	}
 }
