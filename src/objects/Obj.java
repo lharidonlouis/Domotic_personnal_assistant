@@ -11,8 +11,10 @@ public class Obj {
 	Position pos;
 	Status status;
 	
-	public Obj(){
-		
+	public Obj(String name, Position pos, Status status){
+		this.name = name;
+		this.pos = pos;
+		this.status = status;
 	}
 	
 	public void change_status(String var){
