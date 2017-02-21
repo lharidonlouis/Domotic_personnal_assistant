@@ -18,12 +18,11 @@ public class Obj {
 	Position pos;
 	Status status;
 	
-<<<<<<< HEAD
 	public Obj(String name, Position pos, Status status){
 		this.name = name;
 		this.pos = pos;
 		this.status = status;
-=======
+	}
 	private static ArrayList<InfoObj> objet = new ArrayList<InfoObj>();
 	
 	private static final String[] FILE_HEADER_OBJ = {"object", "type", "action", "reaction", "horodatage"};
@@ -38,7 +37,6 @@ public class Obj {
 	
 	public Obj(){
 		this.readObject();
->>>>>>> branch 'master' of https://github.com/lharidonlouis/Domotic_personnal_assistant
 	}
 	
 	public void change_status(String var){
