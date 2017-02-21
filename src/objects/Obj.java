@@ -18,26 +18,26 @@ public class Obj {
 	Position pos;
 	Status status;
 	
-	public Obj(String name, Position pos, Status status){
-		this.name = name;
-		this.pos = pos;
-		this.status = status;
-	}
+
 	private static ArrayList<InfoObj> objet = new ArrayList<InfoObj>();
 	
 	private static final String[] FILE_HEADER_OBJ = {"object", "type", "action", "reaction", "horodatage"};
 	
 	private static final String OBJPATH = System.getProperty("user.dir") + "/object.csv";
 	
-	private static final String name = "object";
+	private static String name = "object";
 	private static final String type = "type";
 	private static final String action = "action";
 	private static final String reaction = "reaction";
 	private static final String horodatage = "horodatage";
 	
-	public Obj(){
-		this.readObject();
+	
+	public Obj(String name, Position pos, Status status){
+		this.name = name;
+		this.pos = pos;
+		this.status = status;
 	}
+	
 	
 	public void change_status(String var){
 		this.status.switchStatus(var);
