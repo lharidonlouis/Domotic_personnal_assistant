@@ -11,7 +11,7 @@ import javax.swing.border.Border;
 public class graphic {
 	public static void main(String[] args) {
 	JFrame window = new JFrame() ;
-	JPanel pan = new JPanel (new GridLayout (8,8));
+	JPanel pan = new JPanel (new GridLayout (10,10));
 	
 	
 	window.setTitle("Grille") ;
@@ -22,7 +22,7 @@ public class graphic {
 
 	
 	Border blackline = BorderFactory.createLineBorder(Color.black,1); 
-	for(int i = 0; i<64;i++){
+	for(int i = 0; i<100;i++){
 	   JPanel ptest = new JPanel();
 	   ptest.setBorder(blackline);
 	   pan.add(ptest);
