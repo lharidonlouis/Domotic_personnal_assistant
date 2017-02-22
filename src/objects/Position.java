@@ -8,7 +8,7 @@ public class Position {
 		this.posX = posX;
 		this.posY = posY;
 	}
-	public int getposX(){
+	public int getposX()  {
 		return posX;
 	}
 	

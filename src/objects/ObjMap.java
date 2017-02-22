@@ -15,10 +15,6 @@ import objects.Obj;
 import objects.Position;
 
 public class ObjMap {
-	
-	Position pos;
-	Status status;
-	
 
 	
 	private static final String[] FILE_HEADER_OBJ = {"object", "type", "action", "reaction", "horodatage"};
@@ -30,12 +26,6 @@ public class ObjMap {
 	private static final String action = "action";
 	private static final String reaction = "reaction";
 	private static final String horodatage = "horodatage";
-	
-	
-	public ObjMap(){
-	
-	}
-	
 	
 
 	private ArrayList<Obj> objects = new ArrayList<Obj>();
@@ -62,9 +52,7 @@ public class ObjMap {
 
 
 	
-	public void change_status(String var){
-		this.status.switchStatus(var);
-	}	
+	
 	
 	public void interact(){
 	 	
