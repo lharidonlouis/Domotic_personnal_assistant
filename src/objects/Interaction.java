@@ -1,5 +1,5 @@
 package objects;
-
-public class IntercationInterface {
+	
+public interface Interaction{
 
 }
