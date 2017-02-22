@@ -1,0 +1,10 @@
+nom:posX,posY[type(action/pb)/"nom_de_l'action1"/objet:action/horodatage],[type(action/pb)/nom_del'action2/objet:action/horodatage]
+
+
+fridge:posX,posY[remove/"take food"/fridge:remove/horodatage],[General_pb/"Door badly closed"/frigo:flag/horodatage]
+television:posX,posY[turn_on/"turn on"/television:turn_on/horodatage],[turn_off/"turn off"/television:turn_off/horodatage]
+vacuum:posX,posY[turn_on/"turn on"/aspirateur:turn_on/horodatage],[General_pb/"vacuum full"/vacuum:flag/horodatage]
+radiator:posX,posY[turn_on/"turn on"/radiator:turn_on/horodatage],[General_pb/"problem"/radiator:flag/horodatage]
+light:posX,posY[turn_on/"turn on"/light:turn_on/horodatage],[turn_off/"turn off"/light:turn_off/horodatage]
+couch:posX,posY[detect/"detect someone"/couch:detect/horodatage],[detect/"couch free"/couch:detect/horodatage]
+
