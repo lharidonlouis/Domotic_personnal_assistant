@@ -11,24 +11,25 @@ import javax.swing.border.Border;
 public class graphic {
 	public static void main(String[] args) {
 	JFrame window = new JFrame() ;
-	JPanel pan = new JPanel (new GridLayout (8,8));
+	JPanel pan = new JPanel (new GridLayout (10,10));
 	
 	
 	window.setTitle("Grille") ;
 	window.setVisible(true);
-	window.setSize(500,500);
+	window.setSize(1200,1200);
 	window.setLocationRelativeTo(null);
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	
 	Border blackline = BorderFactory.createLineBorder(Color.black,1); 
-	for(int i = 0; i<64;i++){
+	for(int i = 0; i<100;i++){
 	   JPanel ptest = new JPanel();
 	   ptest.setBorder(blackline);
 	   pan.add(ptest);
 	}
 	
 	pan.setBorder(blackline);
+	pan.setSize(600, 600);
 	window.add(pan) ;
 	}
 }
