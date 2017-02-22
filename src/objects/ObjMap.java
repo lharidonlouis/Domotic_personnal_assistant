@@ -71,7 +71,8 @@ public class ObjMap {
 	
 						for (i=1; i<csvRecords.size(); i++){
 							CSVRecord record = csvRecords.get(i);
-							objects.add(new Obj(record.get(name), record.get(type), record.get(action), record.get(reaction), record.get(horodatage)));
+							
+							//objects.add(new Obj(record.get(name), record.get(type), record.get(action), record.get(reaction), record.get(horodatage)));
 							}
 						display();
 	
