@@ -4,11 +4,11 @@ public class ObjPossibilityList {
 	
 	private String name;
 	private String type;
-	private String reaction;
+	private Reaction reaction;
 	private String timestamp;
 	
 	
-	public ObjPossibilityList(String name, String type, String reaction, String horodatage){
+	public ObjPossibilityList(String name, String type, Reaction reaction, String horodatage){
 		this.name = name;
 		this.type = type;
 		this.reaction = reaction;
@@ -29,10 +29,10 @@ public class ObjPossibilityList {
 		this.type = type;
 	}
 
-	public String getReaction() {
+	public Reaction getReaction() {
 		return reaction;
 	}
-	public void setReaction(String reaction) {
+	public void setReaction(Reaction reaction) {
 		this.reaction = reaction;
 	}
 	

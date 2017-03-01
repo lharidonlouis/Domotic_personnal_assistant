@@ -38,7 +38,7 @@ public class Obj{
 		}
 	}
 	
-	public void addPossibility(String name, String type, String reaction, String timestamp){
+	public void addPossibility(String name, String type, Reaction reaction, String timestamp){
 		ObjPossibilityList temp = new ObjPossibilityList(name, type, reaction, timestamp);
 		objPosList.add(temp);
 	}
