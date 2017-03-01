@@ -30,7 +30,7 @@ public class graphic {
 		   JPanel panTest = new JPanel();
 		   panTest.setBorder(blackline);
 		   panGrid.setBorder(blackline);
-		   panGrid.add(panTest);
+		   panGrid.add(panTest) ;
 		}		
 		panGrid.setSize(800, 760);
 		window.add(panGrid) ;
