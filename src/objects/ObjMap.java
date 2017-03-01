@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -14,12 +15,7 @@ import objects.Obj;
 import objects.Position;
 
 public class ObjMap {
-	
-	Position pos;
-	Status status;
-	
 
-	private static ArrayList<Obj> objet = new ArrayList<Obj>();
 	
 	private static final String[] FILE_HEADER_OBJ = {"object", "type", "action", "reaction", "horodatage"};
 	
@@ -31,15 +27,32 @@ public class ObjMap {
 	private static final String reaction = "reaction";
 	private static final String horodatage = "horodatage";
 	
-	
-	public ObjMap(){
-	
+
+	private ArrayList<Obj> objects = new ArrayList<Obj>();
+
+
+	public void add(Obj object) {
+		objects.add(object);
 	}
 	
+	public Obj searchByObjName(String name){
+		Obj result = null;
+		for (Obj object : objects) {
+			if (object.getName().contains(name)) {
+				result = object;
+			}
+		}
+		if (result == null) {
+			throw new NoSuchElementException("Object " + name + " does not exists.");
+		} else {
+			return result;
+		}
+	}
 	
-	public void change_status(String var){
-		this.status.switchStatus(var);
-	}	
+
+
+	
+	
 	
 	public void interact(){
 	 	
@@ -58,7 +71,8 @@ public class ObjMap {
 	
 						for (i=1; i<csvRecords.size(); i++){
 							CSVRecord record = csvRecords.get(i);
-							objet.add(new Obj(record.get(name), record.get(type), record.get(action), record.get(reaction), record.get(horodatage)));
+							
+							//objects.add(new Obj(record.get(name), record.get(type), record.get(action), record.get(reaction), record.get(horodatage)));
 							}
 						display();
 	
@@ -73,17 +87,17 @@ public class ObjMap {
 
 
 	public Obj getInfoObj(int i){
-		return objet.get(i);
+		return objects.get(i);
 	}
 
 	public ArrayList<Obj> getObjet(){
-		return objet;
+		return objects;
 	}
 
 	public void display(){
 		int i;
-		for (i=0; i<objet.size(); i++){
-			System.out.println(objet.get(i).toString());
+		for (i=0; i<objects.size(); i++){
+			System.out.println(objects.get(i).toString());
 		}
 	}
 

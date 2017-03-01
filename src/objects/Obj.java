@@ -1,25 +1,19 @@
 package objects;
 
+import java.util.ArrayList;
+
 //import objects.Position;
 
 public class Obj{
 	
 	private String name;
-	private String type;
-	private String action;
-	private String reaction;
 	private Position pos;
-	private String horodatage;
 	private Status status;
+	private ArrayList<ObjPossibilityList> objPosList = new ArrayList<ObjPossibilityList>();
 	
-	
-	public Obj(String name, String type, String action, String reaction, String horodatage) {
-		super();
+	public Obj(String name, Position pos) {
 		this.name = name;
-		this.type = type;
-		this.action = action;
-		this.reaction = reaction;
-		this.horodatage = horodatage;
+		this.pos = pos;
 	}
 	
 	public String getName() {
@@ -28,41 +22,29 @@ public class Obj{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getAction() {
-		return action;
-	}
-	public void setAction(String action) {
-		this.action = action;
-	}
-	public String getReaction() {
-		return reaction;
-	}
-	public void setReaction(String reaction) {
-		this.reaction = reaction;
+	
+	public Position getPos() {
+			return pos;
 	}
 	
-	 public Position getPos() {
-		return pos;
-	}
 	public void setPos(Position pos) {
 		this.pos = pos;
 	}
-	
-	public String getHorodatage() {
-		return horodatage;
+
+	public void display(){
+		int i;
+		for (i=0; i<objPosList.size(); i++){
+			System.out.println(objPosList.get(i).toString());
+		}
 	}
-	public void setHorodatage(String horodatage) {
-		this.horodatage = horodatage;
+	
+	public void addPossibility(String name, String type, Reaction reaction, String timestamp){
+		ObjPossibilityList temp = new ObjPossibilityList(name, type, reaction, timestamp);
+		objPosList.add(temp);
 	}
 	
 	public String toString(){
-		return name + "/" + type + "/" + action + "/" + reaction + "/" + horodatage;
+		return "0";// name + "/" + type + "/" + action + "/" + reaction + "/" + horodatage;
 	}
 	
 }

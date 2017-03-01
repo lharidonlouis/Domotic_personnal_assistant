@@ -1,10 +1,12 @@
-import objects.Obj;
+import objects.ObjMap;
 
 public class Test {
 
 	public static void main(String[] args) {
-		System.out.println("test de val");
-
+		ObjMap TEST = new ObjMap();
+		
+		TEST.readObject();
+		TEST.display();
 	}
 
 }     
