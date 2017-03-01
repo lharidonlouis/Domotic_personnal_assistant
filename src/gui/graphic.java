@@ -1,4 +1,4 @@
- package gui;
+package gui;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -8,28 +8,32 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+
 public class graphic {
 	public static void main(String[] args) {
-	JFrame window = new JFrame() ;
-	JPanel pan = new JPanel (new GridLayout (10,10));
-	
-	
-	window.setTitle("Grille") ;
-	window.setVisible(true);
-	window.setSize(1200,1200);
-	window.setLocationRelativeTo(null);
-	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JFrame window = new JFrame() ;
+		JPanel panGrid = new JPanel() ;
+		JPanel pan2 = new JPanel() ; 
+		GridLayout Grid = new GridLayout(20,20) ;
+		
+		
+		window.setTitle("Grille") ;
+		window.setVisible(true);
+		window.setSize(1200,780);
+		window.setLocationRelativeTo(null);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	
-	Border blackline = BorderFactory.createLineBorder(Color.black,1); 
-	for(int i = 0; i<100;i++){
-	   JPanel ptest = new JPanel();
-	   ptest.setBorder(blackline);
-	   pan.add(ptest);
-	}
 	
-	pan.setBorder(blackline);
-	pan.setSize(600, 600);
-	window.add(pan) ;
-	}
+		for(int i = 0; i<(20*20);i++){
+		   Border blackline = BorderFactory.createLineBorder(Color.black,1); 
+		   JPanel panTest = new JPanel();
+		   panTest.setBorder(blackline);
+		   panGrid.setBorder(blackline);
+		   panGrid.add(panTest);
+		}		
+		panGrid.setSize(800, 760);
+		window.add(panGrid) ;
+		window.add(pan2);	
+	}		
 }
