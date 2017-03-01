@@ -11,9 +11,6 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import objects.Obj;
-import objects.Position;
-
 public class ObjMap {
 
 	

@@ -18,7 +18,6 @@ public class graphic {
 		
 		
 		window.setTitle("Grille") ;
-		window.setVisible(true);
 		window.setSize(1200,780);
 		window.setLocationRelativeTo(null);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,5 +34,7 @@ public class graphic {
 		panGrid.setSize(800, 760);
 		window.add(panGrid) ;
 		window.add(pan2);	
+		window.setVisible(true);
+
 	}		
 }
