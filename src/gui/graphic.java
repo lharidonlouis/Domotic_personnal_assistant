@@ -41,6 +41,6 @@ public class graphic {
 		window.add(panGrid) ;
 		window.add(pan2);	
 		window.setVisible(true);
-
+		//TEST
 	}		
 }
