@@ -25,9 +25,15 @@ public class graphic {
 	
 	
 		for(int i = 0; i<(20*20);i++){
+		
 		   Border blackline = BorderFactory.createLineBorder(Color.black,1); 
 		   JPanel panTest = new JPanel();
+		   panGrid.setBackground(Color.red);
 		   panTest.setBorder(blackline);
+		   panTest.setBackground(Color.blue);
+		   if(i==23*9){
+			   panTest.setBackground(Color.GREEN);
+		   }
 		   panGrid.setBorder(blackline);
 		   panGrid.add(panTest);
 		}		
