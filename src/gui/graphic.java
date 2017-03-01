@@ -12,9 +12,9 @@ import javax.swing.border.Border;
 public class graphic {
 	public static void main(String[] args) {
 		JFrame window = new JFrame() ;
-		JPanel panGrid = new JPanel() ;
+	
 		JPanel pan2 = new JPanel() ; 
-		GridLayout Grid = new GridLayout(20,20) ;
+		JPanel panGrid= new JPanel( new GridLayout(20,20)) ;
 		
 		
 		window.setTitle("Grille") ;
