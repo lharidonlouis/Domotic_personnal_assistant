@@ -4,16 +4,22 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 
+import objects.MapSetter;
+import objects.Obj;
 
-public class Graphic {
-	public static void main(String[] args) {
+
+public class Graphic implements MapSetter{
+	public Map map;
+	public  void window() {
 		
 		JFrame window = new JFrame() ;
 		JPanel pan2 = new JPanel() ; 
@@ -105,12 +111,25 @@ public class Graphic {
 					//System.out.println(tab[index1][index2]);
 			}
 		}
+		
+		String test12 =  map.get("fridge").toString();
+		JLabel test23 = new JLabel(test12);
+		
+		
 		panGrid.setSize(800, 760);
 		pan2.setSize(400,760);
+		
+		pan2.add(test23);
+
 		window.add(panGrid) ;
 		window.add(pan2);
 		window.setVisible(true);
 	
 		
+	}
+
+	@Override
+	public void setMap(Map map) {
+		this.map = map;
 	}	
 }

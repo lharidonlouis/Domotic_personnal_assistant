@@ -30,7 +30,8 @@ public class Test {
 		ds.displayStatus();
 		
 		Graphic gr = new Graphic();
-		gr.main(args);
+		ds.giveMap(gr);
+		gr.window();
 	}
 
 }     
