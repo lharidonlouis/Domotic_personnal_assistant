@@ -1,8 +1,7 @@
 import java.util.HashMap;
+
 import objects.DataStorage;
-import objects.Interaction;
 import objects.Obj;
-import objects.actions.Turn_Off;
 
 
 public class Test {
