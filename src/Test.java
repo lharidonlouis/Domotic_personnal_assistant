@@ -2,6 +2,7 @@ import java.util.HashMap;
 
 import objects.DataStorage;
 import objects.Obj;
+import objects.User;
 
 
 public class Test {
@@ -18,7 +19,15 @@ public class Test {
 		objects.get("TV").do_i("turn tv on");
 		ds.display();
 		ds.displayStatus();
-		objects.get("TV").do_i("turn tv off");
+	
+		
+		User usr = new User();
+		ds.giveMap(usr);
+		
+		usr.test();
+		ds.display();
+		ds.displayStatus();
+		objects.get("fridge").do_i("take food");
 		ds.display();
 		ds.displayStatus();
 	}

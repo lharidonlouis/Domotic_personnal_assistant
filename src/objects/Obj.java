@@ -13,24 +13,15 @@ import java.util.Map;
 
 public class Obj{
 	
-	private String name;
 	private Position pos;
 	public Status status;
 	
 	//private  ArrayList<Interaction> interactList = new ArrayList<Interaction>();
 	HashMap<String, String>interactList = new HashMap<String, String>();
 	
-	public Obj(String name, Position pos) {
-		this.name = name;
+	public Obj(Position pos) {
 		this.pos = pos;
 		status = new Status();
-	}
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	public Position getPos() {
@@ -143,6 +134,9 @@ public class Obj{
 		status.setDetected(true);
 	}
 	
+	public void setQT(int val){
+		status.setQuantity(val);
+	}
 	
 	
 	public String StringInte(){

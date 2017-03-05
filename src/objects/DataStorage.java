@@ -24,9 +24,7 @@ public class DataStorage implements MapSetter, MapGiver{
    
     private   String OBJPATH = System.getProperty("user.dir") + "/object.csv";
 
-	public void add(Obj object) {
-		objects.put(object.getName(), object);
-	}
+
 	
 	public Obj searchByObjName(String name){
 		Obj result = null;
@@ -47,7 +45,7 @@ public class DataStorage implements MapSetter, MapGiver{
 	              String[] readingObject;
 	              while ((readingObject = reader.readNext()) != null) {
 	            	 Position pos_temp = new Position(Integer.parseInt(readingObject[1]),Integer.parseInt(readingObject[2]));
-	                 Obj current = new Obj(readingObject[0], pos_temp);
+	                 Obj current = new Obj(pos_temp);
 	                 int i = Integer.valueOf(readingObject[3]);
 	                 for(int j=0; j<i; j++){
 		                 //current.addInteraction("objects.actions."+readingObject[4+2*j], readingObject[5+2*j]);
@@ -55,7 +53,7 @@ public class DataStorage implements MapSetter, MapGiver{
 	                 }
 	                 current.iniStatus();
 	                 
-	                objects.put(current.getName(), current);
+	                objects.put(readingObject[0], current);
 	              }    
 	          } catch (IOException e) {
 	              e.printStackTrace();
