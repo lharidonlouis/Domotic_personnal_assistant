@@ -12,7 +12,7 @@ import javax.swing.JTable;
 import javax.swing.border.Border;
 
 
-public class graphic {
+public class Graphic {
 	public static void main(String[] args) {
 		
 		JFrame window = new JFrame() ;
@@ -102,7 +102,7 @@ public class graphic {
 		
 		for (int index1=0 ; index1<50; index1++ ){
 			for (int index2=0 ; index2<50; index2++ ){
-					System.out.println(tab[index1][index2]);
+					//System.out.println(tab[index1][index2]);
 			}
 		}
 		panGrid.setSize(800, 760);

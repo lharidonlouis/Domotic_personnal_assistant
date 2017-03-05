@@ -1,5 +1,6 @@
 import java.util.HashMap;
 
+import gui.Graphic;
 import objects.DataStorage;
 import objects.Obj;
 import objects.User;
@@ -17,7 +18,6 @@ public class Test {
 		ds.displayStatus();
 		
 		objects.get("TV").do_i("turn tv on");
-		ds.display();
 		ds.displayStatus();
 	
 		
@@ -25,11 +25,12 @@ public class Test {
 		ds.giveMap(usr);
 		
 		usr.test();
-		ds.display();
 		ds.displayStatus();
 		objects.get("fridge").do_i("take food");
-		ds.display();
 		ds.displayStatus();
+		
+		Graphic gr = new Graphic();
+		gr.main(args);
 	}
 
 }     
