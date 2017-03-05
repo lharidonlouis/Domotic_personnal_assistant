@@ -23,4 +23,8 @@ public class Position {
 	public void setPosY(int posY){
 		this.posY = posY;
 	}
+	
+	public String toString(){
+		return "x: " + posX + " y: " + posY;
+	}
 }
