@@ -1,4 +1,4 @@
-package gui;
+package gui2;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -14,7 +14,6 @@ import javax.swing.JTable;
 import javax.swing.border.Border;
 
 import objects.MapSetter;
-import objects.Obj;
 
 
 public class Graphic implements MapSetter{

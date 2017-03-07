@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-import gui.Graphic;
+import gui2.Graphic;
 import objects.DataStorage;
 import objects.Obj;
 import objects.User;
