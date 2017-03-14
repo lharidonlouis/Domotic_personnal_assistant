@@ -1,8 +1,8 @@
 \contentsline {section}{\numberline {1}Introduction}{1}
-\contentsline {paragraph}{Fonctionnalit\'es}{1}
-\contentsline {paragraph}{}{1}
-\contentsline {paragraph}{}{1}
-\contentsline {paragraph}{}{1}
+\contentsline {paragraph}{Contexte}{1}
+\contentsline {paragraph}{Le projet}{1}
+\contentsline {paragraph}{Fonctionnalit\'es}{2}
+\contentsline {paragraph}{}{2}
 \contentsline {section}{\numberline {2}Sp\'ecification}{2}
 \contentsline {paragraph}{Chapeau}{2}
 \contentsline {subsection}{\numberline {2.1}Premi\`ere sous-section}{2}

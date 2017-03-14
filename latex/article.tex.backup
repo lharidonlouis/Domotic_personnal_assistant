@@ -37,7 +37,7 @@
 
 %Une section "remerciements" pourrait être intéressante. C'est une section non numéroté (avec un * )
 \section*{Remerciements}
-Nous voudirons remercier Monsieur Tianxiao LIU pour nous avoir accompagné tout au long de ce projet et pour avoir su nous aider lors de difficultés.
+Les auteurs du projet voudraient remercier Monsieur Tianxiao LIU
 
 \input{introduction.tex}
 \input{specification.tex}
