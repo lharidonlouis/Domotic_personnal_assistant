@@ -38,6 +38,7 @@ public class Graphic extends MapInit implements MapSetter{
 		JPanel tabPanel[][] = new JPanel[50][50] ; 
 		
 		// creat grid display
+
 		initMap() ;
 		for (int index1=0 ; index1<50; index1++ ){
 			for (int index2=0 ; index2<50; index2++ ){

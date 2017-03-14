@@ -1,9 +1,12 @@
 package map;
 
-public class MapInit {
+public class MapInit{
 	protected int tab[][] = new int [50][50];
+	
 	public void initMap() {
-		// Initialization of the grid
+		// Initialisation of the grid
+
+
 		for (int index1=0 ; index1<50; index1++ ){ 		
 			for (int index2=0 ; index2<50; index2++ ){
 				tab[index1][index2] = 0 ;
@@ -51,9 +54,17 @@ public class MapInit {
 			
 		// Inside walls
 			
+
 		for (int i=0 ; i<15 ; i++) {
 			tab[13][i]=1 ;
 			tab[29][i]=1 ;	
 		}
+
+			// Inside walls
+			
+			for (int i=0 ; i<15 ; i++) {
+				tab[13][i]=1 ;
+				tab[29][i]=1 ;			
+			}
 	}
 }
