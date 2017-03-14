@@ -35,7 +35,7 @@ public class Graphic extends MapInit implements MapSetter{
 		
 		
 		// creat grid display
-		
+		initMap(); 
 		for (int index1=0 ; index1<50; index1++ ){
 			for (int index2=0 ; index2<50; index2++ ){
 				if (tab[index1][index2] == 1) {
