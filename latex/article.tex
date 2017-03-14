@@ -1,0 +1,54 @@
+%Définir le format du document: papier, taille de police, type de document, etc.
+\documentclass[a4paper, 11pt]{article}
+
+%%%%%%%%% Packages externes utilisés %%%%%%%%%%%%%%%%%%%
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{macro}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{algorithm2e}
+
+
+%La mise en page du rapport, NE PAS MODIFIER.
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm,
+ }
+
+%%%%%%%%% Le corps du document entre begin et end %%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%Page de garde
+\input{titre.tex}
+
+%Génération automatique de la table des matières, de la liste des figures et de la liste des tableaux
+\tableofcontents
+\listoffigures
+\listoftables
+
+%Une section "remerciements" pourrait être intéressante. C'est une section non numéroté (avec un * )
+\section*{Remerciements}
+Les auteurs du projet voudraient remercier Monsieur Tianxiao LIU
+
+\input{introduction.tex}
+\input{specification.tex}
+\input{realisation.tex}
+\input{manuel.tex}
+\input{deroulement.tex}
+\input{conclusion.tex}
+
+%Références bibliographiques du document
+\bibliographystyle{plain}
+\bibliography{bibliographies}
+\nocite{*}
+
+\end{document}
