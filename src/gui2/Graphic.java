@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,11 +19,15 @@ import objects.MapSetter;
 
 public class Graphic extends MapInit implements MapSetter{
 	public Map map;
+	
 	public  void window() {
 		
 		JFrame window = new JFrame() ;
 		JPanel pan2 = new JPanel() ; 
 		JPanel panGrid= new JPanel( new GridLayout(50,50)) ;
+		JButton bouton1 = new JButton() ;
+		JButton bouton2 = new JButton() ;
+		JButton bouton3 = new JButton() ;
 		
 		window.setTitle("Grille") ;
 		window.setSize(1200,780);
@@ -32,10 +37,8 @@ public class Graphic extends MapInit implements MapSetter{
 		
 		JPanel tabPanel[][] = new JPanel[50][50] ; 
 		
-		
-		
 		// creat grid display
-		
+		initMap() ;
 		for (int index1=0 ; index1<50; index1++ ){
 			for (int index2=0 ; index2<50; index2++ ){
 				if (tab[index1][index2] == 1) {
@@ -54,7 +57,7 @@ public class Graphic extends MapInit implements MapSetter{
 		
 		for (int index1=0 ; index1<50; index1++ ){
 			for (int index2=0 ; index2<50; index2++ ){
-					System.out.println(tab[index1][index2]);
+					//System.out.println(tab[index1][index2]);
 			}
 		}
 		
@@ -63,7 +66,11 @@ public class Graphic extends MapInit implements MapSetter{
 		
 		
 		panGrid.setSize(800, 760);
+		
 		pan2.setSize(400,760);
+		pan2.setBackground(Color.darkGray);
+		pan2.add(bouton1);
+		
 		
 		pan2.add(test23);
 
