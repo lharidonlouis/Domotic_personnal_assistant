@@ -25,6 +25,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import objects.MapSetter;
+import objects.Chat;
 
 
 public class Graphic extends MapInit implements MapSetter{
@@ -33,7 +34,7 @@ public class Graphic extends MapInit implements MapSetter{
 	public  void window() {
 		
 		JFrame window = new JFrame() ;
-		JPanel dashboard = new JPanel() ; 
+		JPanel dashboard = new Chat() ; 
 		JPanel actionPan = new JPanel() ;
 		JPanel panGrid= new JPanel( new GridLayout(50,50)) ;
 		JButton Actions = new JButton("Actions") ;
@@ -86,15 +87,15 @@ public class Graphic extends MapInit implements MapSetter{
 		String test12 =  map.get("fridge").toString();
 		JLabel test23 = new JLabel(test12);
 		
-		JTextArea textArea = new JTextArea(40, 30);
-		JScrollPane scrollPane = new JScrollPane(textArea); 
-		textArea.setEditable(true);
+		//JTextArea textArea = new JTextArea(40, 30);
+		//JScrollPane scrollPane = new JScrollPane(textArea); 
+		//textArea.setEditable(true);
 		
 		dashboard.add(Actions) ;
 		Actions.setSize(20,20);
 		dashboard.add(Ajouter) ;
 		Ajouter.setSize(20,20);
-		dashboard.add(textArea);
+		//dashboard.add(textArea);
 		//pan2.add(test23);
 		
 		split.add(panGrid) ;
