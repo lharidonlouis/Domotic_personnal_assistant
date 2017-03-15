@@ -10,13 +10,9 @@ import javax.swing.JTextArea;
 
 public class Chat extends JPanel implements KeyListener{
 	JPanel p=new JPanel();
-	JTextArea dialog=new JTextArea(20,50);
-	JTextArea input=new JTextArea(1,50);
-	JScrollPane scroll=new JScrollPane(
-		dialog,
-		JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-		JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
-	);
+	JTextArea dialog = new JTextArea(30, 30);
+	JTextArea input=new JTextArea(1,10);
+	JScrollPane scroll=new JScrollPane(dialog,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 	String[][] chatBot={
 			//standard greetings
