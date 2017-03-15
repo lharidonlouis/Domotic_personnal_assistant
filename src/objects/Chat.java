@@ -1,6 +1,4 @@
 package objects;
-
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -9,14 +7,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Chat extends JPanel implements KeyListener{
-	JPanel p=new JPanel();
-	JTextArea dialog=new JTextArea(20,50);
-	JTextArea input=new JTextArea(1,50);
-	JScrollPane scroll=new JScrollPane(
-		dialog,
-		JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-		JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
-	);
+	JPanel chat =new JPanel();
+	JTextArea dialog=new JTextArea(30,30);
+	JTextArea input=new JTextArea(1,10);
+	JScrollPane scroll=new JScrollPane(dialog,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
 	String[][] chatBot={
 			//standard greetings
@@ -42,10 +36,9 @@ public class Chat extends JPanel implements KeyListener{
 			dialog.setEditable(false);
 			input.addKeyListener(this);
 		
-			p.add(scroll);
-			p.add(input);
-			p.setBackground(new Color(255,200,0));
-			add(p);
+			chat.add(scroll);
+			chat.add(input);
+			add(chat);
 			
 			setVisible(true);
 		}

@@ -1,28 +1,16 @@
 package gui2;
 import map.MapInit;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Frame;
 import java.awt.GridLayout;
 import java.util.Map;
-
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.border.Border;
 
 import objects.MapSetter;
 import objects.Chat;
@@ -34,8 +22,8 @@ public class Graphic extends MapInit implements MapSetter{
 	public  void window() {
 		
 		JFrame window = new JFrame() ;
-		JPanel dashboard = new Chat() ; 
-		JPanel actionPan = new JPanel() ;
+		JPanel chat = new Chat() ; 
+		JPanel dashboard = new JPanel() ;
 		JPanel panGrid= new JPanel( new GridLayout(50,50)) ;
 		JButton Actions = new JButton("Actions") ;
 		JButton Ajouter = new JButton("Ajouter") ;
@@ -90,11 +78,13 @@ public class Graphic extends MapInit implements MapSetter{
 		//JTextArea textArea = new JTextArea(40, 30);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
 		//textArea.setEditable(true);
-		
+		chat.setSize(10,10);
 		dashboard.add(Actions) ;
 		Actions.setSize(20,20);
 		dashboard.add(Ajouter) ;
 		Ajouter.setSize(20,20);
+		dashboard.add(chat);
+		chat.setBackground(Color.black);
 		//dashboard.add(textArea);
 		//pan2.add(test23);
 		
