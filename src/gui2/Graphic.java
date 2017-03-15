@@ -34,7 +34,7 @@ public class Graphic extends MapInit implements MapSetter{
 	public  void window() {
 		
 		JFrame window = new JFrame() ;
-		JPanel dashboard = new JPanel(new Chat()) ; 
+		JPanel dashboard = new Chat() ; 
 		JPanel actionPan = new JPanel() ;
 		JPanel panGrid= new JPanel( new GridLayout(50,50)) ;
 		JButton Actions = new JButton("Actions") ;
