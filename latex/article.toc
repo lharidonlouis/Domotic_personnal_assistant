@@ -5,14 +5,19 @@
 \contentsline {paragraph}{Fonctionnalit\'es}{2}
 \contentsline {paragraph}{}{2}
 \contentsline {subsection}{\numberline {1.1}Pr\'esentation de l'\'equipe}{2}
-\contentsline {section}{\numberline {2}Sp\'ecification}{2}
-\contentsline {paragraph}{Chapeau}{2}
-\contentsline {subsection}{\numberline {2.1}Premi\`ere sous-section}{2}
-\contentsline {paragraph}{Premier paragraphe}{2}
+\contentsline {section}{\numberline {2}Interface Graphique}{2}
 \contentsline {paragraph}{}{2}
-\contentsline {subsection}{\numberline {2.2}Deuxi\`eme sous-section}{2}
-\contentsline {section}{\numberline {3}R\'ealisation}{2}
+\contentsline {subsection}{\numberline {2.1}Partie fixe}{2}
 \contentsline {paragraph}{}{2}
-\contentsline {section}{\numberline {4}Manuel Utilisateur}{2}
-\contentsline {section}{\numberline {5}D\'eroulement du projet}{2}
+\contentsline {paragraph}{D\'etail Plan}{2}
+\contentsline {subsection}{\numberline {2.2}Partie flexible}{2}
+\contentsline {paragraph}{}{2}
+\contentsline {paragraph}{Description}{3}
+\contentsline {paragraph}{2\`eme bouton}{3}
+\contentsline {section}{\numberline {3}R\'ealisation}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {section}{\numberline {4}Manuel Utilisateur}{3}
+\contentsline {section}{\numberline {5}D\'eroulement du projet}{3}
 \contentsline {section}{\numberline {6}Conclusion}{3}
+\contentsline {section}{\numberline {7}Annexe}{4}
+\contentsline {paragraph}{}{4}
