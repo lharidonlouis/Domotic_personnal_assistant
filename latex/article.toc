@@ -18,6 +18,6 @@
 \contentsline {paragraph}{}{3}
 \contentsline {section}{\numberline {4}Manuel Utilisateur}{3}
 \contentsline {section}{\numberline {5}D\'eroulement du projet}{3}
-\contentsline {section}{\numberline {6}Conclusion}{3}
+\contentsline {section}{\numberline {6}Conclusion}{4}
 \contentsline {section}{\numberline {7}Annexe}{4}
 \contentsline {paragraph}{}{4}
