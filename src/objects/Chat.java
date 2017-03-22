@@ -1,4 +1,5 @@
 package objects;
+import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -11,20 +12,20 @@ public class Chat extends JPanel implements KeyListener{
 	JTextArea dialog=new JTextArea(30,30);
 	JTextArea input=new JTextArea(1,10);
 	JScrollPane scroll=new JScrollPane(dialog,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		
+	JPanel scrolljp = new JPanel() ;
 	String[][] chatBot={
 			//standard greetings
-			{"hi","hello","hola","ola","howdy"},
-			{"hi","hello","hey"},
+			{"hey","bonjour","salut","bonjour"},
+			{"Bonjour","Comment allez vous ?","Hey"},
 			//question greetings
-			{"how are you","how r you","how r u","how are u"},
-			{"good","doing well"},
-			//yes
-			{"yes"},
-			{"no","NO","NO!!!!!!!"},
+			{"Comment vas tu ?", "ca va ?", "ça va ?", "comment ca va ?", "comment ça va ?"},
+			{"Très bien, merci","Tout vas bien pour moi"},
+			
+			{"Allume la lumière", "allume la lumiere", "allume la lumière"},
+			{"Très bien j'allume la lumière"},
 			//default
-			{"shut up","you're bad","noob","stop talking",
-			"(michael is unavailable, due to LOL)"}
+			{"Désolé je ne comprends pas","Pouvez vous mieux vous exprimer ? ","Euh ??",
+			"(Désolé je ne suis pas disponible)"}
 		};
 		
 		public static void main(String[] args){	
@@ -35,8 +36,10 @@ public class Chat extends JPanel implements KeyListener{
 			
 			dialog.setEditable(false);
 			input.addKeyListener(this);
-		
-			chat.add(scroll);
+			chat.setLayout(new GridLayout(2, 1));
+			scrolljp.add(scroll);
+			chat.add(scrolljp);
+			
 			chat.add(input);
 			add(chat);
 			
@@ -49,7 +52,7 @@ public class Chat extends JPanel implements KeyListener{
 				//-----grab quote-----------
 				String quote=input.getText();
 				input.setText("");
-				addText("-->You:\t"+quote);
+				addText("Me :\t"+quote);
 				quote.trim();
 				while(
 					quote.charAt(quote.length()-1)=='!' ||
@@ -71,7 +74,7 @@ public class Chat extends JPanel implements KeyListener{
 					if(inArray(quote.toLowerCase(),chatBot[j*2])){
 						response=2;
 						int r=(int)Math.floor(Math.random()*chatBot[(j*2)+1].length);
-						addText("\n-->Michael\t"+chatBot[(j*2)+1][r]);
+						addText("\nHome : \t"+chatBot[(j*2)+1][r]);
 					}
 					j++;
 					if(j*2==chatBot.length-1 && response==0){
@@ -82,7 +85,7 @@ public class Chat extends JPanel implements KeyListener{
 				//-----default--------------
 				if(response==1){
 					int r=(int)Math.floor(Math.random()*chatBot[chatBot.length-1].length);
-					addText("\n-->Michael\t"+chatBot[chatBot.length-1][r]);
+					addText("\nHome : \t"+chatBot[chatBot.length-1][r]);
 				}
 				addText("\n");
 			}

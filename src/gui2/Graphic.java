@@ -1,9 +1,11 @@
 package gui2;
 import map.MapInit;
 
-
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,19 +18,23 @@ import objects.MapSetter;
 import objects.Chat;
 
 
-public class Graphic extends MapInit implements MapSetter{
+public class Graphic extends MapInit implements MapSetter , ActionListener{
 	public Map map;
+	JFrame window = new JFrame() ;
+	JPanel chat = new Chat() ; 
+	JPanel action = new JPanel() ;
+	JPanel dashboard = new JPanel() ;
+	JPanel panGrid= new JPanel( new GridLayout(50,50)) ;
+	JButton ActionsBt = new JButton("Actions") ;
+	JButton Ajouter = new JButton("Ajouter") ;
 	
+	
+	final static String CHAT = "Card with JButtons and chat";
+	final static String ACTIONS = "Card with actions";
+	
+	JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	public  void window() {
-		
-		JFrame window = new JFrame() ;
-		JPanel chat = new Chat() ; 
-		JPanel dashboard = new JPanel() ;
-		JPanel panGrid= new JPanel( new GridLayout(50,50)) ;
-		JButton Actions = new JButton("Actions") ;
-		JButton Ajouter = new JButton("Ajouter") ;
-		
-		JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+				
 		split.setDividerLocation(800);
 		
 		window.setTitle("Hello, My Name is Home") ;
@@ -38,14 +44,20 @@ public class Graphic extends MapInit implements MapSetter{
 
 		panGrid.setSize(800, 760);
 		panGrid.setBackground(Color.decode("#4B77BE"));
+		
 		dashboard.setSize(400, 760);
 		dashboard.setBackground(Color.decode("#4B77BE"));
 		dashboard.setLocation(400, 0);
 		
+		action.setSize(400, 760);
+		action.setBackground(Color.decode("#4B77BE"));
+		action.setLocation(400, 0);
+		
+		
 		
 		JPanel tabPanel[][] = new JPanel[50][50] ; 
 		
-		// creat grid display
+		// Create grid display
 
 		initMap() ;
 		
@@ -75,28 +87,34 @@ public class Graphic extends MapInit implements MapSetter{
 		String test12 =  map.get("fridge").toString();
 		JLabel test23 = new JLabel(test12);
 		
-		//JTextArea textArea = new JTextArea(40, 30);
-		//JScrollPane scrollPane = new JScrollPane(textArea); 
-		//textArea.setEditable(true);
-		chat.setSize(10,10);
-		dashboard.add(Actions) ;
-		Actions.setSize(20,20);
+		
+		
+		dashboard.add(ActionsBt) ;
+		ActionsBt.setSize(20,20);
 		dashboard.add(Ajouter) ;
 		Ajouter.setSize(20,20);
 		dashboard.add(chat);
-		chat.setBackground(Color.black);
-		//dashboard.add(textArea);
-		//pan2.add(test23);
+		chat.setSize(10,10);
+		chat.setBackground(Color.decode("#4B77BE"));
+		// dashboard.
 		
 		split.add(panGrid) ;
 		split.add(dashboard);
+		//split.add(action) ;
+		action.setVisible(false) ;
 		window.add(split) ;
 		window.setVisible(true);
 		
-		
-	
+		ActionsBt.addActionListener(this) ;
 	}
-
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == ActionsBt) {
+			split.remove(dashboard);	
+			
+		}
+	}
+	
 	@Override
 	public void setMap(Map map) {
 		this.map = map;
