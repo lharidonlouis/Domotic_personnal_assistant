@@ -8,13 +8,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Chat extends JPanel implements KeyListener{
-<<<<<<< HEAD
 	JPanel p=new JPanel();
 	JTextArea dialog = new JTextArea(30, 30);
-=======
 	JPanel chat =new JPanel();
 	JTextArea dialog=new JTextArea(30,30);
->>>>>>> branch 'master' of https://github.com/lharidonlouis/Domotic_personnal_assistant
 	JTextArea input=new JTextArea(1,10);
 	JScrollPane scroll=new JScrollPane(dialog,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	JPanel scrolljp = new JPanel() ;
