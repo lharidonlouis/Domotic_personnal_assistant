@@ -9,7 +9,6 @@ import javax.swing.JTextArea;
 
 public class Chat extends JPanel implements KeyListener{
 	JPanel p=new JPanel();
-	JTextArea dialog = new JTextArea(30, 30);
 	JPanel chat =new JPanel();
 	JTextArea dialog=new JTextArea(30,30);
 	JTextArea input=new JTextArea(1,10);
