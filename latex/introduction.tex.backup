@@ -14,7 +14,6 @@ L'assistant personnel est donc un véritable outil, très prometteur et avec un no
 
 \newpage
 \paragraph{Fonctionnalités} Fonctionnalités du programme:
-\renewcommand{\labelitemi}{\textbullet}
 \begin{itemize}
 \item Capable de disposer des objets dans un environnement simulé.
 \item Système de messagerie pour permettre une conversation entre l'assistant de la maison et l'utilisateur.
@@ -30,8 +29,3 @@ L'assistant personnel est donc un véritable outil, très prometteur et avec un no
 \item Dropbox
 \item Github
 \end{enumerate}
-
-\subsection{Présentation de l'équipe}
-\label{sec:intro1}
-
-L'équipe est composée de trois personnes, Louis L'Haridon, étudiant de L2 CMI SIC, Julien Demoineret et Valentin Petiteville, étudiants en L2 Informatique à l'université de Cergy-Pontoise
