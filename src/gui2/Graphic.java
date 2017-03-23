@@ -1,6 +1,7 @@
 package gui2;
 import map.MapInit;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -19,6 +20,7 @@ import objects.Chat;
 
 
 public class Graphic extends MapInit implements MapSetter , ActionListener{
+	
 	public Map map;
 	JFrame window = new JFrame() ;
 	JPanel chat = new Chat() ; 
@@ -28,13 +30,14 @@ public class Graphic extends MapInit implements MapSetter , ActionListener{
 	JButton ActionsBt = new JButton("Actions") ;
 	JButton Ajouter = new JButton("Ajouter") ;
 	
-	
-	final static String CHAT = "Card with JButtons and chat";
-	final static String ACTIONS = "Card with actions";
-	
 	JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	
+	
+
+	
+    
 	public  void window() {
-				
+		 		
 		split.setDividerLocation(800);
 		
 		window.setTitle("Hello, My Name is Home") ;
@@ -52,6 +55,7 @@ public class Graphic extends MapInit implements MapSetter , ActionListener{
 		action.setSize(400, 760);
 		action.setBackground(Color.decode("#4B77BE"));
 		action.setLocation(400, 0);
+		
 		
 		
 		
@@ -90,33 +94,37 @@ public class Graphic extends MapInit implements MapSetter , ActionListener{
 		
 		
 		dashboard.add(ActionsBt) ;
-		ActionsBt.setSize(20,20);
 		dashboard.add(Ajouter) ;
-		Ajouter.setSize(20,20);
 		dashboard.add(chat);
 		chat.setSize(10,10);
 		chat.setBackground(Color.decode("#4B77BE"));
+		
+	
 		// dashboard.
 		
 		split.add(panGrid) ;
 		split.add(dashboard);
-		//split.add(action) ;
-		action.setVisible(false) ;
+		
+		//action.setVisible(false) ;
 		window.add(split) ;
 		window.setVisible(true);
-		
-		ActionsBt.addActionListener(this) ;
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == ActionsBt) {
-			split.remove(dashboard);	
 			
-		}
 	}
+		
+	
+	
 	
 	@Override
 	public void setMap(Map map) {
 		this.map = map;
+	}
+
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}	
 }

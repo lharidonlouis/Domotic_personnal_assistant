@@ -77,6 +77,10 @@ public class Chat extends JPanel implements KeyListener{
 						int r=(int)Math.floor(Math.random()*chatBot[(j*2)+1].length);
 						addText("\nHome : \t"+chatBot[(j*2)+1][r]);
 					}
+					else if(quote.contains("lumiere")){
+						response = 2;
+						addText("\nHome : prout");
+					}
 					j++;
 					if(j*2==chatBot.length-1 && response==0){
 						response=1;
