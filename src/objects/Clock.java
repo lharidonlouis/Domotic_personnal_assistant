@@ -9,7 +9,9 @@ public class Clock {
 	
 
 	public void increment() {
-			minute.increment();
+			for(int i = 0; i<10;i++){
+				minute.increment();
+			}
 			if (minute.getValue() == 0) {
 				hour.increment();
 				if(hour.getValue() == 0){

@@ -2,9 +2,9 @@ package objects;
 
 import java.util.Map;
 
-import objects.MapSetter;
+import objects.DbSetter;
 
-public class AnotherClass implements MapSetter {
+public class AnotherClass implements DbSetter {
     private Map map;
 
     public void displayMap() {

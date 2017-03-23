@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 import com.opencsv.CSVReader;
 
-public class DataStorage implements MapSetter, MapGiver{
+public class DataStorage implements DbSetter, DbGiver{
     private Map<String, Obj> objects;
 
     @Override
@@ -16,12 +16,11 @@ public class DataStorage implements MapSetter, MapGiver{
     }
 
     @Override
-    public void giveMap(MapSetter acceptMap) {
+    public void giveMap(DbSetter acceptMap) {
         acceptMap.setMap(objects);
-
+  
     }
     
-   
     private   String OBJPATH = System.getProperty("user.dir") + "/object.csv";
 
 

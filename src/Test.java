@@ -16,7 +16,8 @@ public class Test {
 		ds.readObject();
 		ds.display();
 		ds.displayStatus();
-		
+		objects.get("fridge").setQT(10);
+
 		objects.get("TV").do_i("turn tv on");
 		ds.displayStatus();
 	
@@ -24,8 +25,12 @@ public class Test {
 		User usr = new User();
 		ds.giveMap(usr);
 		
-		usr.test();
+		usr.act("set radiator on", "radiator");
 		ds.displayStatus();
+		
+		usr.act("set radiator off", "radiator");
+		ds.displayStatus();
+		
 		objects.get("fridge").do_i("take food");
 		ds.displayStatus();
 		

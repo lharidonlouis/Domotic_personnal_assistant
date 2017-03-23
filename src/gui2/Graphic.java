@@ -15,11 +15,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
-import objects.MapSetter;
+import objects.DbSetter;
 import objects.Chat;
 
 
-public class Graphic extends MapInit implements MapSetter , ActionListener{
+public class Graphic extends MapInit implements DbSetter , ActionListener{
 	
 	public Map map;
 	JFrame window = new JFrame() ;

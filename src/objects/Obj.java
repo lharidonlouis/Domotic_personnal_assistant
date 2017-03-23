@@ -134,7 +134,7 @@ public class Obj{
 		status.setDetected(true);
 	}
 	
-	public void setQT(int val){
+	public void setQT(int val){ 
 		status.setQuantity(val);
 	}
 	
