@@ -9,6 +9,7 @@ import com.opencsv.CSVReader;
 
 public class DataStorage implements DbSetter, DbGiver{
     private Map<String, Obj> objects;
+    private Clock clock;
 
     @Override
     public void setMap(Map objects) {
@@ -20,7 +21,15 @@ public class DataStorage implements DbSetter, DbGiver{
         acceptMap.setMap(objects);
   
     }
+    @Override
+	public void giveClock(DbSetter acceptclock) {
+        acceptclock.setClock(clock);
+	}
     
+    @Override
+   	public void setClock(Clock clock) {
+    	this.clock = clock;
+   	}
     private   String OBJPATH = System.getProperty("user.dir") + "/object.csv";
 
 
@@ -86,4 +95,6 @@ public class DataStorage implements DbSetter, DbGiver{
 		System.out.println("----------------------------");
 
 	}
+
+	
 }

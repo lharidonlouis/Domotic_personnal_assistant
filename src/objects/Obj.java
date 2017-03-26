@@ -138,7 +138,9 @@ public class Obj{
 		status.setQuantity(val);
 	}
 	
-	
+	public int getQT(){
+		return status.getQuantity();
+	}
 	public String StringInte(){
 		String var = "";
 		Iterator iterator = interactList.entrySet().iterator();
@@ -147,6 +149,10 @@ public class Obj{
           var += mapentry.getKey() + " ";
         } 
 		return var;
+	}
+	
+	public HashMap getActMap(){
+		return interactList;
 	}
 	
 	public Status getStatus(){

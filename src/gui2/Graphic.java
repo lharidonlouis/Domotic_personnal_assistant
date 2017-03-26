@@ -1,14 +1,17 @@
 package gui2;
-import map.MapInit;
-
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,34 +20,64 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
-import objects.DbSetter;
+import counters.CyclicCounter;
+import map.MapInit;
 import objects.Chat;
+import objects.Clock;
+import objects.DbSetter;
+import objects.Obj;
+import objects.User;
 
 
-public class Graphic extends MapInit implements DbSetter , ActionListener{
-	
+public class Graphic extends MapInit implements DbSetter , ActionListener, Runnable{
+	User usr = User.getInstance();;
 	public Map map;
+	private Clock clock;
+
 	JFrame window = new JFrame() ;
 	JPanel chat = new Chat() ; 
 	JPanel action = new JPanel() ;
 	JPanel home = new JPanel() ;
+	JPanel clk = new JPanel();
 	JPanel addremove = new JPanel() ;
 	JPanel dashboard = new JPanel() ;
 	JPanel panGrid= new JPanel( new GridLayout(50,50)) ;
-	
+
+
+	private static final int CHRONO_SPEED = 10;
+
+	private static final long serialVersionUID = 1L;
+
+
+	private JButton startButton = new JButton(" Start ");
+	private JButton clearButton = new JButton(" Clear ");
+
+	private JLabel weekLabel = new JLabel("week:");
+	private JLabel dayLabel = new JLabel("Day:");
+	private JLabel hourLabel = new JLabel("Hour:");
+	private JLabel minuteLabel = new JLabel("Minute:");
+	private boolean stop = true;
+	private Graphic instance = this;
+
+
+	private JLabel weekValue = new JLabel("");
+	private JLabel dayValue = new JLabel("");
+	private JLabel hourValue = new JLabel("");
+	private JLabel minuteValue = new JLabel("");
+
+	private JPanel control = new JPanel();
 	
 	JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	JTabbedPane tabs = new JTabbedPane(SwingConstants.TOP);
 	
-	String[] of = {"","On", "Off"};
-	JComboBox state = new JComboBox(of);
-	
-	String[] items = {"","living room", "kitchen","room","garage"};
-	JComboBox  piece = new JComboBox(items);
+	String[] of = {" "};
+	JComboBox state = new JComboBox();
+	JComboBox  piece = new JComboBox();
+	JButton validate = new JButton(" Validate ");
 
-	
-	public  void window() {
+	public  void window(){
 		 		
+		
 		split.setDividerLocation(800);
 		
 		window.setTitle("Hello, My Name is Home") ;
@@ -102,18 +135,22 @@ public class Graphic extends MapInit implements DbSetter , ActionListener{
 		String test12 =  map.get("fridge").toString();
 		JLabel test23 = new JLabel(test12);
 		
-		state.addActionListener(new ItemAction()) ;
+		piece = new JComboBox(map.keySet().toArray(new String[map.keySet().size()]));
+		state = new JComboBox(of);
+
 		piece.addActionListener(new ItemAction()) ;
+		validate.addActionListener(new ItemAction2());
 		
 		action.add(state);
 		action.add(piece);
-		
+		action.add(validate);
 		
 		// create tabs
 		 
 		tabs.addTab("Home.", home);
 		tabs.addTab("Add/Remove",addremove);  
 		tabs.addTab("Actions", action);
+		tabs.addTab("Clock", clk);
 
 		tabs.setOpaque(false);
 		   
@@ -122,6 +159,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener{
 		chat.setBackground(Color.decode("#4B77BE"));
 		
 		
+		clk.add(init());
 		
 		//window add
 		
@@ -137,13 +175,108 @@ public class Graphic extends MapInit implements DbSetter , ActionListener{
 		
 	class ItemAction implements ActionListener{
 	    public void actionPerformed(ActionEvent e) {
-	      System.out.println("State : " + state.getSelectedItem() + piece.getSelectedItem());
-	      if (state.getSelectedItem() == "On"){
-	    	  tab[10][10]=2 ;  
-	      }
+	      //System.out.println("State : " + state.getSelectedItem() + piece.getSelectedItem());
+	    	HashMap<String, String> acts = ((Obj) map.get(piece.getSelectedItem())).getActMap();
+	    	of =  acts.keySet().toArray(new String[acts.keySet().size()]);
+	    	state.removeAllItems();
+	    	state.addItem(" ");
+	    	for (String item : of) {
+	    		state.addItem(item);
+	    	}
+	    	state.setSelectedItem(" ");
 	    }               
 	  }
 	
+	class ItemAction2 implements ActionListener{
+	    public void actionPerformed(ActionEvent e) {
+	    	usr.act(state.getSelectedItem().toString(), piece.getSelectedItem().toString());
+	    }               
+	  }
+	
+	private Container init() {
+		updateValues();
+
+		Container contentPane = new Container();
+		contentPane.setLayout(new BorderLayout());
+
+		control.setLayout(new FlowLayout(FlowLayout.CENTER));
+		control.add(weekLabel);
+		control.add(weekValue);
+		
+		control.add(dayLabel);
+		control.add(dayValue);
+		
+		control.add(hourLabel);
+		control.add(hourValue);
+
+		control.add(minuteLabel);
+		control.add(minuteValue);
+
+		startButton.addActionListener(new StartStopAction());
+		control.add(startButton);
+
+		clearButton.addActionListener(new ClearAction());
+		control.add(clearButton);
+
+		contentPane.add(BorderLayout.NORTH, control);
+		
+		return contentPane;
+	}
+	
+	private void updateValues() {
+		// This part is for textual time printing.
+		CyclicCounter week = clock.getWeek();
+		weekValue.setText(week.toString() + " ");
+		
+		CyclicCounter day = clock.getDay();
+		dayValue.setText(day.toString() + " ");
+		
+		CyclicCounter hour = clock.getHour();
+		hourValue.setText(hour.toString() + " ");
+
+		CyclicCounter minute = clock.getMinute();
+		minuteValue.setText(minute.toString() + " ");
+
+
+	}
+	
+	
+	public void run() {
+		while (!stop) {
+			try {
+				Thread.sleep(CHRONO_SPEED);
+			} catch (InterruptedException e) {
+				System.out.println(e.getMessage());
+			}
+			clock.increment();
+			updateValues();
+		}
+	}
+
+	private class StartStopAction implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (!stop) {
+				stop = true;
+				startButton.setText(" Start ");
+			} else {
+				stop = false;
+				startButton.setText(" Pause ");
+				Thread chronoThread = new Thread(instance);
+				chronoThread.start();
+			}
+		}
+	}
+
+	private class ClearAction implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			stop = true;
+			startButton.setText(" Start ");
+			clock.init();
+			updateValues();
+		}
+
+	}
+
 	
 	@Override
 	public void setMap(Map map) {
@@ -157,5 +290,13 @@ public class Graphic extends MapInit implements DbSetter , ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+
+	@Override
+	public void setClock(Clock clock) {
+		this.clock = clock;
 	}	
 }

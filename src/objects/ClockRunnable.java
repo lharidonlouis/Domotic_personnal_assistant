@@ -1,7 +1,7 @@
 package objects;
 import counters.CyclicCounter;
 
-public class Clock implements Runnable{
+public class ClockRunnable implements Runnable {
 	private CyclicCounter week = new CyclicCounter(0, 4, 0);
 	private CyclicCounter day = new CyclicCounter(0, 7, 0);
 	private CyclicCounter hour = new CyclicCounter(0, 23, 0);
@@ -77,11 +77,13 @@ public class Clock implements Runnable{
 
 	@Override
 	public void run() {
-		boolean run = true;
-		while(run){
-		increment();	
-		System.out.println(toString());
+		
+		try {
+			Thread.sleep(CHRONO_SPEED);
+		} catch (InterruptedException e) {
+			System.out.println(e.getMessage());
 		}
+		increment();
 	}
 
 }

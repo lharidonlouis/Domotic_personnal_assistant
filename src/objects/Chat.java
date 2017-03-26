@@ -2,18 +2,21 @@ package objects;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Map;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Chat extends JPanel implements KeyListener{
+	User usr = User.getInstance();
 	JPanel p=new JPanel();
 	JPanel chat =new JPanel();
 	JTextArea dialog=new JTextArea(30,30);
 	JTextArea input=new JTextArea(1,10);
 	JScrollPane scroll=new JScrollPane(dialog,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-	JPanel scrolljp = new JPanel() ;
+	JPanel scrolljp = new JPanel();	
+	
 	String[][] chatBot={
 			//standard greetings
 			{"hey","bonjour","salut","bonjour"},
@@ -24,17 +27,16 @@ public class Chat extends JPanel implements KeyListener{
 			
 			{"Allume la lumière", "allume la lumiere", "allume la lumière"},
 			{"Très bien j'allume la lumière"},
+			{"frigo", "manger"},
+			{"test de frigo ok, il reste"  + "aliments", "test2 de frigo ok"},
 			//default
 			{"Désolé je ne comprends pas","Pouvez vous mieux vous exprimer ? ","Euh ??",
 			"(Désolé je ne suis pas disponible)"}
 		};
 		
-		public static void main(String[] args){	
-			new Chat();
-		}
 		
 		public Chat(){
-			
+
 			dialog.setEditable(false);
 			input.addKeyListener(this);
 			chat.setLayout(new GridLayout(2, 1));
@@ -72,14 +74,10 @@ public class Chat extends JPanel implements KeyListener{
 				//-----check for matches----
 				int j=0;//which group we're checking
 				while(response==0){
-					if(inArray(quote.toLowerCase(),chatBot[j*2])){
+					if(inArray(quote,chatBot[j*2])){
 						response=2;
 						int r=(int)Math.floor(Math.random()*chatBot[(j*2)+1].length);
 						addText("\nHome : \t"+chatBot[(j*2)+1][r]);
-					}
-					else if(quote.contains("lumiere")){
-						response = 2;
-						addText("\nHome : prout");
 					}
 					j++;
 					if(j*2==chatBot.length-1 && response==0){
@@ -111,7 +109,8 @@ public class Chat extends JPanel implements KeyListener{
 		public boolean inArray(String in,String[] str){
 			boolean match=false;
 			for(int i=0;i<str.length;i++){
-				if(str[i].equals(in)){
+				//if(str[i].equals(in)){
+				if((in.toLowerCase()).contains(str[i].toLowerCase())){
 					match=true;
 				}
 			}

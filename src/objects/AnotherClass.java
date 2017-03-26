@@ -2,11 +2,10 @@ package objects;
 
 import java.util.Map;
 
-import objects.DbSetter;
-
 public class AnotherClass implements DbSetter {
     private Map map;
-
+    private Clock clock;
+    
     public void displayMap() {
     	System.out.println("val : ");
 
@@ -21,5 +20,10 @@ public class AnotherClass implements DbSetter {
     @Override
     public void setMap(Map map) {
         this.map = map;            
-    }  
+    }
+
+	@Override
+	public void setClock(Clock clock) {
+		this.clock = clock;
+	}  
 }

@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 import gui2.Graphic;
+import objects.Clock;
 import objects.DataStorage;
 import objects.Obj;
 import objects.User;
@@ -8,35 +9,33 @@ import objects.User;
 
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		HashMap<String, Obj>objects = new HashMap<String, Obj>();
+		Clock clock = new Clock(); 
 		DataStorage ds = new DataStorage();
 		ds.setMap(objects);
-		
+		ds.setClock(clock);
 		ds.readObject();
-		ds.display();
-		ds.displayStatus();
 		objects.get("fridge").setQT(10);
 
-		objects.get("TV").do_i("turn tv on");
-		ds.displayStatus();
-	
-		
-		User usr = new User();
-		ds.giveMap(usr);
-		
-		usr.act("set radiator on", "radiator");
-		ds.displayStatus();
-		
-		usr.act("set radiator off", "radiator");
-		ds.displayStatus();
-		
-		objects.get("fridge").do_i("take food");
-		ds.displayStatus();
-		
+		User usr = User.getInstance();
 		Graphic gr = new Graphic();
+		
+		ds.giveMap(usr);
+		ds.giveClock(usr);
 		ds.giveMap(gr);
+		ds.giveClock(gr);
+		
 		gr.window();
+	
+		/*boolean var = true;
+		while(var){
+			Thread.sleep(1000);
+				System.out.println(usr.test());
+				if(usr.test()=="true"){
+					System.out.println("it's ok");
+				}
+		}*/
 	}
 
 }     
