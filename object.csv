@@ -1,3 +1,4 @@
 fridge,1,2,2,Remove,take food,Add,faire les courses,
 TV,3,4,2,Turn_Off,turn tv off,Turn_On,turn tv on
 radiator,5,6,2,Turn_On,set radiator on,Turn_Off,set radiator off
+cofeemaker,8,10,1,Remove,Make cofee

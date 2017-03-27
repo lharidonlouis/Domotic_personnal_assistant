@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -94,6 +93,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		
 		panGrid.setBackground(Color.decode("#4B77BE"));
 		dashboard.setBackground(Color.decode("#4B77BE"));
+		clk.setBackground(Color.decode("#4B77BE"));
 		action.setBackground(Color.decode("#4B77BE"));
 		addremove.setBackground(Color.decode("#4B77BE"));
 		home.setBackground(Color.decode("#4B77BE"));
@@ -162,7 +162,6 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		clk.add(init());
 		
 		//window add
-		
 		window.getContentPane().add(dashboard);    
 		
 		split.add(panGrid) ;
@@ -170,7 +169,6 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		
 		window.add(split) ;
 		window.setVisible(true);
-			
 	}
 		
 	class ItemAction implements ActionListener{

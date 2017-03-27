@@ -1,15 +1,11 @@
 package objects;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-
-//import objects.Position;
 
 public class Obj{
 	
@@ -32,72 +28,14 @@ public class Obj{
 		this.pos = pos;
 	}
 	
-	/*public void addInteraction(String className, String name){
-		 Object object = null;
-	      try {
-	          Class classDefinition = Class.forName(className);
-	          Constructor con = classDefinition.getConstructor(String.class);
-	          object = con.newInstance(name);
-	      } catch (InstantiationException e) {
-	          System.out.println(e);
-	      } catch (IllegalAccessException e) {
-	          System.out.println(e);
-	      } catch (ClassNotFoundException e) {
-	          System.out.println(e);
-	      } catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
-	      interactList.add((Interaction) object);
-	}*/
-	
-	
-	/*public void addInteraction(String className, String name){
-	 Object object = null;
-     try {
-         Class classDefinition = Class.forName(className);
-         Constructor con = classDefinition.getConstructor(String.class);
-         object = con.newInstance(name);
-     } catch (InstantiationException e) {
-         System.out.println(e);
-     } catch (IllegalAccessException e) {
-         System.out.println(e);
-     } catch (ClassNotFoundException e) {
-         System.out.println(e);
-     } catch (NoSuchMethodException e) {
-		e.printStackTrace();
-	} catch (SecurityException e) {
-		e.printStackTrace();
-	} catch (IllegalArgumentException e) {
-		e.printStackTrace();
-	} catch (InvocationTargetException e) {
-		e.printStackTrace();
-	}
-     interactList.add((Interaction) object);
-}*/
-	
 	public void iniStatus(){
 		status.ini();
 	}
 	
-	/*public String StringInte(){
-		String var = "";
-		int i = 0;
-		for (i=0; i<interactList.size(); i++){
-			var += interactList.get(i).getName() + " ";
-			//interactList.get(i).do_interact();
-		}
-		return var;
-	}*/
-	
 	public void addInteraction(String name, String functname){
 		interactList.put(name, functname);
 	}
+	
 	public void do_i(String name){
 		Method m;
 		try {
@@ -141,6 +79,7 @@ public class Obj{
 	public int getQT(){
 		return status.getQuantity();
 	}
+	
 	public String StringInte(){
 		String var = "";
 		Iterator iterator = interactList.entrySet().iterator();
@@ -161,10 +100,5 @@ public class Obj{
 	
 	public String toString(){
 		return pos.toString() + " " + StringInte();
-	}
-	
-	
-	public void use(){
-		
 	}
 }

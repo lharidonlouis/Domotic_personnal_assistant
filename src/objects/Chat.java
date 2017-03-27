@@ -2,7 +2,6 @@ package objects;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Map;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -34,6 +33,42 @@ public class Chat extends JPanel implements KeyListener{
 			"(Désolé je ne suis pas disponible)"}
 		};
 		
+	String[][][] chatBot2={
+			{
+				{"bonjour","salut"},
+				{""},
+				{"Bonjour","Comment allez vous?","Hey"},
+				{"none"}
+			},
+			{
+				{"frigo","manger","refrigerateur","cuisiner"},
+				{"ouvrir","nourriture"},
+				{"je fais ça!","j'ai pris de la nouriture"},
+				{"take food","fridge"},
+			},
+			{
+				{"café","déca","cafetière"},
+				{"préparer","faire","allumer","fais","allumes","prépares"},
+				{"je fais ça!","Je prépare ça immédiatement"},
+				{"Make cofee", "cofeemaker"}
+			},
+			{
+				{"TV","télé","télévision","série","film"},
+				{"allumes","allumer","regarder"},
+				{"Regardons la télévision!","C'est allumé","Regardons ça"},
+				{"turn tv on", "TV"}
+			},
+			{
+				{"TV","télé","télévision","série","film"},
+				{"éteindre","éteins","eteindre","eteins","arrêter"},
+				{"J'ai arrêté télévision!","C'est éteind","Eteignons ça"},
+				{"turn tv off", "TV"}
+			},
+			//Default
+			{
+				{"Désolé je ne comprends pas","Pouvez vous mieux vous exprimer ? ","Euh ??", "(Désolé je ne suis pas disponible)"}
+			}
+	};
 		
 		public Chat(){
 
@@ -73,7 +108,7 @@ public class Chat extends JPanel implements KeyListener{
 				*/
 				//-----check for matches----
 				int j=0;//which group we're checking
-				while(response==0){
+				/*while(response==0){
 					if(inArray(quote,chatBot[j*2])){
 						response=2;
 						int r=(int)Math.floor(Math.random()*chatBot[(j*2)+1].length);
@@ -84,7 +119,21 @@ public class Chat extends JPanel implements KeyListener{
 						response=1;
 					}
 				}
-				
+				*/
+				while(response==0){
+					if(inArray(quote,chatBot2[j][0])&&(inArray(quote,chatBot2[j][1]))){
+						response=2;
+						int r=(int)Math.floor(Math.random()*chatBot2[(j)][2].length);
+						addText("\nHome : \t"+chatBot2[j][2][r]);
+						if(!(chatBot2[j][3].equals("none"))){
+							usr.act(chatBot2[j][3][0],chatBot2[j][3][1]);
+						}
+					}
+					j++;
+					if(j==chatBot2.length-1 && response==0){
+						response=1;
+					}
+				}
 				//-----default--------------
 				if(response==1){
 					int r=(int)Math.floor(Math.random()*chatBot[chatBot.length-1].length);
