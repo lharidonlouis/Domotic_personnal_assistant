@@ -90,7 +90,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		dashboard.setSize(400, 760);
 		
 		// background color
-		
+
 		panGrid.setBackground(Color.decode("#4B77BE"));
 		dashboard.setBackground(Color.decode("#4B77BE"));
 		clk.setBackground(Color.decode("#4B77BE"));
@@ -196,17 +196,26 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 
 		Container contentPane = new Container();
 		contentPane.setLayout(new BorderLayout());
-
+		control.setBackground(Color.decode("#4B77BE"));
+		weekLabel.setForeground(Color.white);
+		weekValue.setForeground(Color.white);
 		control.setLayout(new FlowLayout(FlowLayout.CENTER));
 		control.add(weekLabel);
-		control.add(weekValue);
+		control.add((weekValue));
 		
+		dayLabel.setForeground(Color.white);
+		dayValue.setForeground(Color.white);
 		control.add(dayLabel);
 		control.add(dayValue);
 		
+		
+		hourLabel.setForeground(Color.white);
+		hourValue.setForeground(Color.white);
 		control.add(hourLabel);
 		control.add(hourValue);
 
+		minuteLabel.setForeground(Color.white);
+		minuteValue.setForeground(Color.white);
 		control.add(minuteLabel);
 		control.add(minuteValue);
 
@@ -215,6 +224,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 
 		clearButton.addActionListener(new ClearAction());
 		control.add(clearButton);
+		//control.setForeground(Color.white);
 
 		contentPane.add(BorderLayout.NORTH, control);
 		
@@ -225,7 +235,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		// This part is for textual time printing.
 		CyclicCounter week = clock.getWeek();
 		weekValue.setText(week.toString() + " ");
-		
+
 		CyclicCounter day = clock.getDay();
 		dayValue.setText(day.toString() + " ");
 		
