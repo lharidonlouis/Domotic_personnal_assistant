@@ -1,4 +1,5 @@
 package objects;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -78,6 +79,12 @@ public class Chat extends JPanel implements KeyListener{
 			scrolljp.add(scroll);
 			chat.add(scrolljp);
 			
+			dialog.setBackground(Color.decode("#4B77BE"));
+			dialog.setForeground(Color.WHITE);
+			
+			input.setBackground(Color.decode("#4B77BE"));
+			input.setForeground(Color.WHITE);
+			
 			chat.add(input);
 			add(chat);
 			
@@ -92,6 +99,7 @@ public class Chat extends JPanel implements KeyListener{
 				input.setText("");
 				addText("Me :\t"+quote);
 				quote.trim();
+				
 				while(
 					quote.charAt(quote.length()-1)=='!' ||
 					quote.charAt(quote.length()-1)=='.' ||
@@ -125,6 +133,7 @@ public class Chat extends JPanel implements KeyListener{
 						response=2;
 						int r=(int)Math.floor(Math.random()*chatBot2[(j)][2].length);
 						addText("\nHome : \t"+chatBot2[j][2][r]);
+
 						if(!(chatBot2[j][3].equals("none"))){
 							usr.act(chatBot2[j][3][0],chatBot2[j][3][1]);
 						}
