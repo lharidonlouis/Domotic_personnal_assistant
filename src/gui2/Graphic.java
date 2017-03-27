@@ -65,6 +65,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 	private JLabel minuteValue = new JLabel("");
 
 	private JPanel control = new JPanel();
+	private JPanel controlButton = new JPanel();
 	
 	JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	JTabbedPane tabs = new JTabbedPane(SwingConstants.TOP);
@@ -196,10 +197,14 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 
 		Container contentPane = new Container();
 		contentPane.setLayout(new BorderLayout());
+		control.setLayout(new FlowLayout());
+		controlButton.setLayout(new FlowLayout());
+		
 		control.setBackground(Color.decode("#4B77BE"));
+		controlButton.setBackground(Color.decode("#4B77BE"));
+		
 		weekLabel.setForeground(Color.white);
 		weekValue.setForeground(Color.white);
-		control.setLayout(new FlowLayout(FlowLayout.CENTER));
 		control.add(weekLabel);
 		control.add((weekValue));
 		
@@ -217,16 +222,17 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		minuteLabel.setForeground(Color.white);
 		minuteValue.setForeground(Color.white);
 		control.add(minuteLabel);
-		control.add(minuteValue);
+		control.add(minuteValue) ;
 
 		startButton.addActionListener(new StartStopAction());
-		control.add(startButton);
+		controlButton.add(startButton);
 
 		clearButton.addActionListener(new ClearAction());
-		control.add(clearButton);
-		//control.setForeground(Color.white);
+		controlButton.add(clearButton);
+		control.setForeground(Color.white);
 
 		contentPane.add(BorderLayout.NORTH, control);
+		contentPane.add(controlButton);
 		
 		return contentPane;
 	}
