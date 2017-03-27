@@ -77,7 +77,7 @@ public class MapInit{
 	protected void reader() {
 		String csvFile = "/log.csv";
         String line = "";
-        String cvsSplitBy = ",";
+        String cvsSplitBy = ","  ;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
