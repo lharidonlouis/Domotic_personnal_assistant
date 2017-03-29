@@ -6,7 +6,7 @@ public class Clock implements Runnable{
 	private CyclicCounter day = new CyclicCounter(1, 7, 1);
 	private CyclicCounter hour = new CyclicCounter(0, 23, 0);
 	private CyclicCounter minute = new CyclicCounter(0, 59, 0);
-	private static final int CHRONO_SPEED = 100;
+	private static final int CHRONO_SPEED = 1000;
 
 	private static final long serialVersionUID = 1L;
 

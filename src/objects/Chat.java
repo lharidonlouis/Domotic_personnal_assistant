@@ -1,9 +1,11 @@
 package objects;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -12,8 +14,8 @@ public class Chat extends JPanel implements KeyListener{
 	User usr = User.getInstance();
 	JPanel p=new JPanel();
 	JPanel chat =new JPanel();
-	JTextArea dialog=new JTextArea(30,30);
-	JTextArea input=new JTextArea(1,10);
+	JTextArea dialog=new JTextArea(40,30);	
+	JTextArea input=new JTextArea(1,2);
 	JScrollPane scroll=new JScrollPane(dialog,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	JPanel scrolljp = new JPanel();	
 	
@@ -72,9 +74,9 @@ public class Chat extends JPanel implements KeyListener{
 	};
 		
 		public Chat(){
-
 			dialog.setEditable(false);
 			input.addKeyListener(this);
+			input.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 			chat.setLayout(new GridLayout(2, 1));
 			scrolljp.add(scroll);
 			chat.add(scrolljp);

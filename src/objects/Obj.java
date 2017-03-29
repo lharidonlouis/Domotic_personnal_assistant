@@ -72,6 +72,10 @@ public class Obj{
 		status.setDetected(true);
 	}
 	
+	public void Undetect(){
+		status.setDetected(false);
+	}
+	
 	public void setQT(int val){ 
 		status.setQuantity(val);
 	}

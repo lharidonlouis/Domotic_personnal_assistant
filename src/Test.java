@@ -17,6 +17,7 @@ public class Test {
 		ds.setClock(clock);
 		ds.readObject();
 		objects.get("fridge").setQT(10);
+		objects.get("cofeemaker").setQT(10);
 
 		User usr = User.getInstance();
 		Graphic gr = new Graphic();
