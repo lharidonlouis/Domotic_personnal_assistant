@@ -24,6 +24,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import counters.CyclicCounter;
 import map.MapInit;
@@ -87,6 +89,8 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 	JComboBox state = new JComboBox();
 	JComboBox  piece = new JComboBox();
 	JButton validate = new JButton(" Validate ");
+	
+	private Color border;
 
 	public  void window(){
 		 		
@@ -112,6 +116,8 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		addremove.setBackground(Color.decode("#4B77BE"));
 		home.setBackground(Color.decode("#4B77BE"));
 		
+		border = Color.decode("#4B77BE");
+		
 		
 		
 		// Create grid display
@@ -134,6 +140,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		tabs.addTab("Add/Remove",addremove);  
 		tabs.addTab("Actions", action);
 		tabs.addTab("Clock", clk);
+		tabs.addChangeListener(new ChangePanListener());
 
 		tabs.setOpaque(false);
 		   
@@ -154,6 +161,20 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		
 		window.add(split) ;
 		window.setVisible(true);
+	}
+	
+	class ChangePanListener implements ChangeListener{
+		@Override
+		public void stateChanged(ChangeEvent e) {
+			if (tabs.getSelectedIndex() == 1){
+				border = Color.white;
+				updateMap();
+			}
+			else{
+				border =Color.decode("#4B77BE");
+				updateMap();
+			}
+		}
 	}
 	
 	public void initMap(){
@@ -213,7 +234,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 				}
 				else {
 					JPanel j = new JPanel() ;
-					j.setBorder(BorderFactory.createLineBorder(Color.white));
+					j.setBorder(BorderFactory.createLineBorder(border));
 					j.setBackground(Color.decode("#4B77BE"));
 					panGrid.add(j) ;
 				}
