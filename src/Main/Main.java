@@ -1,5 +1,11 @@
 package Main;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 
 import counters.Clock;
 import gui2.Graphic;
@@ -20,6 +26,7 @@ public class Main {
 	 * 	exception d'interruption
 	 */
 	public static void main(String[] args) throws InterruptedException {
+		iniData();
 		HashMap<String, Obj> objects = new HashMap<String, Obj>();
 		Clock clock = new Clock();
 		DataStorage ds = new DataStorage();
@@ -45,5 +52,25 @@ public class Main {
 		clock.set(0, 1, 1, 2);
 
 		gr.window();
+	}
+	/**
+	 * 
+	 */
+	public static void iniData(){
+		try {
+			String OBJPATH = System.getProperty("user.dir") + "/log.csv";
+			String OBJPATH2 = System.getProperty("user.dir") + "/log_REF.csv";
+			CSVWriter writer = new CSVWriter(new FileWriter(OBJPATH, false), ',', CSVWriter.NO_QUOTE_CHARACTER);
+			CSVReader reader = null;
+			reader = new CSVReader(new FileReader(OBJPATH2));
+			String[] readLine;
+			while ((readLine = reader.readNext()) != null) {
+				writer.writeNext(readLine);
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 }
