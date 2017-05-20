@@ -38,54 +38,165 @@ import objects.Home;
 import objects.Obj;
 import objects.User;
 
+/**
+ * Classe Graphique
+ */
 public class Graphic extends MapInit implements DbSetter, ActionListener, Runnable {
+	/**
+	 * Instance de User
+	 */
 	User usr = User.getInstance();
+	/**
+	 * Instance de Home
+	 */
 	Home hme = Home.getInstance();
 
+	/**
+	 * Map d'objets
+	 */
 	public Map map;
+	/**
+	 * Horloge
+	 */
 	private Clock clock;
 
+	/**
+	 * JFrame pour le grapgic
+	 */
 	JFrame window = new JFrame();
+	/**
+	 * JPanel actions
+	 */
 	JPanel action = new JPanel();
+	/**
+	 * JPanel home 
+	 */
 	JPanel home = new JPanel();
+	/**
+	 * Jpanel clock
+	 */
 	JPanel clk = new JPanel();
+	/**
+	 * Chat
+	 */
 	JPanel chat = new Chat();
+	/**
+	 * JPanel add/remove
+	 */
 	JPanel addremove = new JPanel();
+	/**
+	 * JPanel dashboard
+	 */
 	JPanel dashboard = new JPanel();
+	/**
+	 * Grille
+	 */
 	JPanel panGrid = new JPanel(new GridLayout(50, 50));
 
+	/**
+	 * Vitesse de l'horlog
+	 */
 	private static final int CHRONO_SPEED = 500;
 
+	/**
+	 * SerialVersion
+	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Bouton Start
+	 */
 	private JButton startButton = new JButton(" Start ");
+	/**
+	 * Bouton Clear
+	 */
 	private JButton clearButton = new JButton(" Clear ");
 
+	/**
+	 * JLabel week
+	 */
 	private JLabel weekLabel = new JLabel("week:");
+	/**
+	 * JLabel day
+	 */
 	private JLabel dayLabel = new JLabel("Day:");
+	/**
+	 * JLabel Hour
+	 */
 	private JLabel hourLabel = new JLabel("Hour:");
+	/**
+	 * JLable min
+	 */
 	private JLabel minuteLabel = new JLabel("Minute:");
+	/**
+	 * Boolean stop
+	 */
 	private boolean stop = true;
+	/**
+	 * Instance de la classe
+	 */
 	private Graphic instance = this;
 
+	/**
+	 * JLabel valeur de week du chrono
+	 */
 	private JLabel weekValue = new JLabel("");
+	/**
+	 * JLabel valeur de day du chrono
+	 */
 	private JLabel dayValue = new JLabel("");
+	/**
+	 * JLabel valeur de hour du chrono
+	 */
 	private JLabel hourValue = new JLabel("");
+	/**
+	 * JLabel valeur de minute du chrono
+	 */
 	private JLabel minuteValue = new JLabel("");
 
+	/**
+	 * JPanel control
+	 */
 	private JPanel control = new JPanel();
+	/**
+	 * JPanel controlButton
+	 */
 	private JPanel controlButton = new JPanel();
 
+	/**
+	 * JSPlitPane split
+	 */
 	JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	/**
+	 * JTabbeedPane tabs
+	 */
 	JTabbedPane tabs = new JTabbedPane(SwingConstants.TOP);
 
+	/**
+	 * Tableau de String
+	 */
 	String[] of = { " " };
+	/**
+	 * JCombobox state
+	 */
 	JComboBox state = new JComboBox();
+	/**
+	 * JComboBox piece
+	 */
 	JComboBox piece = new JComboBox();
+	/**
+	 * JButton validate
+	 */
 	JButton validate = new JButton(" Validate ");
 
+	/**
+	 * Couleur de la vorder
+	 */
 	private Color border;
 
+	/**
+	 * Fonction de définiton de la fenêtre
+	 */
 	public void window() {
 
 		split.setDividerLocation(800);
@@ -153,6 +264,12 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		window.setVisible(true);
 	}
 
+	/**
+	 * Listener de chagement de panneau
+	 *<p>
+	 *Met à jour la map au changement
+	 *<p>
+	 */
 	class ChangePanListener implements ChangeListener {
 		@Override
 		public void stateChanged(ChangeEvent e) {
@@ -166,6 +283,9 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * Initialisation de la Map et de la QT
+	 */
 	public void initMap() {
 		panGrid.removeAll();
 		initMap(map);
@@ -173,6 +293,9 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		dispMap();
 	}
 
+	/**
+	 * Mise à jour de la Map et de la QT
+	 */
 	public void updateMap() {
 		panGrid.removeAll();
 		updateMapVal(map);
@@ -180,6 +303,9 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		SwingUtilities.updateComponentTreeUI(window);
 	}
 
+	/**
+	 * affichage de la Map
+	 */
 	public void dispMap() {
 		Font tempfont = new Font("Helvetica", Font.PLAIN, 10);
 		for (int index1 = 0; index1 < 50; index1++) {
@@ -226,10 +352,11 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * Listener d'ajout des actions
+	 */
 	class ItemAction implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			// System.out.println("State : " + state.getSelectedItem() +
-			// piece.getSelectedItem());
 			HashMap<String, String> acts = ((Obj) map.get(piece.getSelectedItem())).getActMap();
 			of = acts.keySet().toArray(new String[acts.keySet().size()]);
 			state.removeAllItems();
@@ -239,6 +366,10 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * Listener de réalisation des action
+	 *<p>User réalise l'action sélectionnée</p>
+	 */
 	class ItemAction2 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			usr.act(state.getSelectedItem().toString(), piece.getSelectedItem().toString());
@@ -246,6 +377,10 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * Initialisation du contanier
+	 * @return le contenPane
+	 */
 	private Container init() {
 		updateValues();
 
@@ -290,6 +425,9 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		return contentPane;
 	}
 
+	/**
+	 * Mise à jour des valeurs de l'Horloge
+	 */
 	private void updateValues() {
 		// This part is for textual time printing.
 		CyclicCounter week = clock.getWeek();
@@ -306,6 +444,9 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	public void run() {
 		while (!stop) {
 			try {
@@ -327,6 +468,9 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * Action Listener du démarage de l'horloge
+	 */
 	private class StartStopAction implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (!stop) {
@@ -341,6 +485,10 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * ActionListener de la réinitialisation de l'horloge
+	 *
+	 */
 	private class ClearAction implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			stop = true;
@@ -351,22 +499,37 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 
 	}
 
+	/* (non-Javadoc)
+	 * @see objects.DbSetter#setMap(java.util.Map)
+	 */
 	@Override
 	public void setMap(Map map) {
 		this.map = map;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see objects.DbSetter#setClock(counters.Clock)
+	 */
 	@Override
 	public void setClock(Clock clock) {
 		this.clock = clock;
 	}
 
+	/**
+	 * Recherche de l'automation dans automation.csv
+	 * <p>
+	 * Si une automation est enregistrée à l'heure de l'horloge, home la réalise.
+	 * </p>
+	 */
 	public void checkAuto() {
 		CSVReader reader1 = null;
 		String dir = System.getProperty("user.dir");
@@ -391,6 +554,12 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * Recherche d'évenement dans calendar.csv
+	 * <p>
+	 * Si un évènement est enregistrée à l'heure de l'horloge, home la réalise.
+	 * </p>
+	 */
 	public void checkCalen() {
 		CSVReader reader1 = null;
 		String dir = System.getProperty("user.dir");
@@ -430,6 +599,12 @@ public class Graphic extends MapInit implements DbSetter, ActionListener, Runnab
 		}
 	}
 
+	/**
+	 * Brief de l'agenda de la journée
+	 * <p>
+	 * Si un évènement est prévue en ce jour, home prévient l'utilisateur.
+	 * </p>
+	 */
 	public void briefCalen() {
 		CSVReader reader1 = null;
 		String dir = System.getProperty("user.dir");

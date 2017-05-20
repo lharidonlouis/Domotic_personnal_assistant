@@ -287,9 +287,10 @@ public class Home implements DbSetter {
 
 	/**
 	 * Fonction d'action
-	 * 
 	 * @param toDo
+	 * 	action a réaliser
 	 * @param objToUse
+	 * 	objet sur lequel faire l'action
 	 * <p>Permet à Home de réaliser une action et de l'enregistrer dans le log.
 	 * </p>
 	 */

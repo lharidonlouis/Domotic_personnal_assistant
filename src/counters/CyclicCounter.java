@@ -1,11 +1,26 @@
 package counters;
 
+/**
+ * Compteur cyclique
+ */
 public class CyclicCounter extends BoundedCounter {
 
+	/**
+	 * Constructeur
+	 * @param value
+	 * 	la valeur du compteur
+	 * @param max
+	 * 	la valeur maximale
+	 * @param min
+	 * 	la valeur minimale
+	 */
 	public CyclicCounter(int value, int max, int min) {
 		super(value, max, min);
 	}
 
+	/* (non-Javadoc)
+	 * @see counters.BoundedCounter#decrement()
+	 */
 	@Override
 	public void decrement() {
 		if (getValue() > getMin()) {
@@ -15,6 +30,9 @@ public class CyclicCounter extends BoundedCounter {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see counters.BoundedCounter#increment()
+	 */
 	@Override
 	public void increment() {
 		if (getValue() < getMax()) {
@@ -24,14 +42,14 @@ public class CyclicCounter extends BoundedCounter {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return Clock.transform(getValue());
 	}
 
-	public int compareTo(CyclicCounter hour) {
-		// TODO Auto-generated method stub
-		return Integer.valueOf(getValue()).compareTo(Integer.valueOf(hour.getValue()));
-	}
+
 
 }

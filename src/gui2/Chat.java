@@ -13,17 +13,43 @@ import javax.swing.JTextArea;
 import objects.Home;
 import objects.User;
 
+/**
+ * Jpanel du Chat
+ */
 public class Chat extends JPanel implements KeyListener {
+	/**
+	 * Instance de User
+	 */
 	User usr = User.getInstance();
+	/**
+	 * Instance de Hime
+	 */
 	Home hme = Home.getInstance();
+	/**
+	 * JPanel de Chat
+	 */
 	JPanel chat = new JPanel();
-	JPanel p = new JPanel();
+	/**
+	 * JText Area pour le Dialog
+	 */
 	JTextArea dialog = new JTextArea(20, 30);
+	/**
+	 * JText Area pour l'input
+	 */
 	JTextArea input = new JTextArea(1, 2);
+	/**
+	 * JScrollPane pour composer le chat
+	 */
 	JScrollPane scroll = new JScrollPane(dialog, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	/**
+	 * JPanel pour le scroll
+	 */
 	JPanel scrolljp = new JPanel();
 
+	/**
+	 * Tableau des dialogues
+	 */
 	String[][][] chatBot2 = {
 
 			{ { "allume", "chauffe", "réchauffe" }, { "salle de bain", "radiateur", "chauffage" },
@@ -117,6 +143,9 @@ public class Chat extends JPanel implements KeyListener {
 			{ { "Désolé je ne comprends pas", "Pouvez vous mieux vous exprimer ? ", "Euh ??",
 					"(Désolé je ne suis pas disponible)" } } };
 
+	/**
+	 * Constructeru du chat
+	 */
 	public Chat() {
 		dialog.setEditable(false);
 		dialog.setLineWrap(true);
@@ -137,6 +166,9 @@ public class Chat extends JPanel implements KeyListener {
 		add(input);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			input.setEditable(false);
@@ -186,19 +218,38 @@ public class Chat extends JPanel implements KeyListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			input.setEditable(true);
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	public void keyTyped(KeyEvent e) {
 	}
 
+	/**
+	 * Ajout du texte au dialogue
+	 * @param str
+	 * 	texte à ajouter au dialogue
+	 */
 	public void addText(String str) {
 		dialog.setText(dialog.getText() + str);
 	}
 
+	/**
+	 * Véfification de la présence d'un String dans un tableau de Strings
+	 * @param in
+	 * 	String dont la présence est à vérifier
+	 * @param str
+	 * 	tableau de String pour vérifier la présence
+	 * @return vrai si in est présent dans str, faux sinon
+	 */
 	public boolean inArray(String in, String[] str) {
 		boolean match = false;
 		for (int i = 0; i < str.length; i++) {
