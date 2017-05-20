@@ -8,7 +8,9 @@ import java.util.Map;
 
 import com.opencsv.CSVWriter;
 
-public class User implements DbSetter, Runnable{
+import counters.Clock;
+
+public class User implements DbSetter{
 
 	private User(){
 		
@@ -23,7 +25,7 @@ public class User implements DbSetter, Runnable{
 	    try {
 	         String dir = System.getProperty("user.dir");
 	    	 String csv = dir + "/log.csv";
-		     CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
+		     CSVWriter writer = new CSVWriter(new FileWriter(csv, true), ',' , CSVWriter.NO_QUOTE_CHARACTER);
 		    //Create record
 		    String [] record = (objToUse + "," + toDo + "," + clock.getMinute() + "," + clock.getHour() + "," + clock.getDay() + "," + clock.getWeek()).split(",");
 		    //Write the record to file
@@ -78,15 +80,6 @@ public class User implements DbSetter, Runnable{
 	@Override
 	public void setClock(Clock clock) {
 		this.clock=clock;
-	}
-	
-
-
-	@Override
-	public void run() {
-		System.out.println(clock.toString());
-		testvar = true;
-		System.out.println(test());
 	}
 }
 		

@@ -1,5 +1,4 @@
-package objects;
-import counters.CyclicCounter;
+package counters;
 
 public class Clock implements Runnable{
 	private CyclicCounter week = new CyclicCounter(1, 4, 1);
@@ -14,7 +13,6 @@ public class Clock implements Runnable{
 	public void increment() {
 			for(int i = 0; i<10;i++){
 				minute.increment();
-			}
 			if (minute.getValue() == 0) {
 				hour.increment();
 				if(hour.getValue() == 0){
@@ -24,10 +22,11 @@ public class Clock implements Runnable{
 					}
 				}
 			}
-
+		}
 	}
 
 	public void decrement() {
+		for(int i = 0; i<10;i++){
 			minute.decrement();
 			if (minute.getValue() == 59) {
 				hour.decrement();
@@ -38,6 +37,7 @@ public class Clock implements Runnable{
 					}
 				}
 			}
+		}
 	}
 
 	public CyclicCounter getWeek(){
@@ -74,13 +74,63 @@ public class Clock implements Runnable{
 		hour.setValue(0);
 		minute.setValue(0);
 	}
+	
+	public void set(int m, int h, int d, int w){
+		week.setValue(w);
+		day.setValue(d);
+		hour.setValue(h);
+		minute.setValue(m);
+	}
+	
+	public boolean inrange(int delta, Clock base){
+		if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+			return true;
+		}
+		for(int i=0; i<(delta/10);i++){
+			base.increment();
+			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+				return true;
+			}
+		}
+		for(int i=0;i<((2*delta)/10);i++){
+			base.decrement();
+			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+				return true;
+			}
+		}
+		return false;
+	}
 
+	public int inrangeOf(int delta, Clock base){
+		int count = 0;
+		if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+			return count;
+		}
+
+		for(int i=0; i<(delta/10);i++){
+			base.increment();
+			count++;
+			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+				return count;
+			}
+		}
+		for(int i=0;i<((2*delta)/10);i++){
+			base.decrement();
+			count--;
+			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+				return count;
+			}
+		}
+		return count;
+	}
+	
+	
 	@Override
 	public void run() {
 		boolean run = true;
 		while(run){
 		increment();	
-		System.out.println(toString());
+		//System.out.println(toString());
 		}
 	}
 

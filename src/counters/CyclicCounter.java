@@ -1,7 +1,5 @@
 package counters;
 
-import objects.Clock;
-
 public class CyclicCounter extends BoundedCounter {
 
 	public CyclicCounter(int value, int max, int min) {
@@ -29,6 +27,11 @@ public class CyclicCounter extends BoundedCounter {
 	@Override
 	public String toString() {
 		return Clock.transform(getValue());
+	}
+
+	public int compareTo(CyclicCounter hour) {
+		// TODO Auto-generated method stub
+		return Integer.valueOf(getValue()).compareTo(Integer.valueOf(hour.getValue()));
 	}
 
 }

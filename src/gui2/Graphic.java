@@ -7,8 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,16 +27,21 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import com.opencsv.CSVReader;
+
+import counters.Clock;
 import counters.CyclicCounter;
 import map.MapInit;
-import objects.Clock;
 import objects.DbSetter;
+import objects.Home;
 import objects.Obj;
 import objects.User;
 
 
-public class Graphic extends MapInit implements DbSetter , ActionListener, Runnable, KeyListener{
-	User usr = User.getInstance();;
+public class Graphic extends MapInit implements DbSetter , ActionListener, Runnable{
+	User usr = User.getInstance();
+	Home hme = Home.getInstance();
+
 	public Map map;
 	private Clock clock;
 
@@ -44,20 +49,15 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 	JPanel action = new JPanel() ;
 	JPanel home = new JPanel() ;
 	JPanel clk = new JPanel();
-	JPanel chat = new JPanel();
+	JPanel chat = new Chat();
 	JPanel addremove = new JPanel() ;
 	JPanel dashboard = new JPanel() ;
 	JPanel panGrid = new JPanel( new GridLayout(50,50)) ;
 
 	
-	JPanel p=new JPanel();
-	JTextArea dialog=new JTextArea(20,30);	
-	JTextArea input=new JTextArea(1,2);
-	JScrollPane scroll=new JScrollPane(dialog,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-	JPanel scrolljp = new JPanel();	
 	
 
-	private static final int CHRONO_SPEED = 100;
+	private static final int CHRONO_SPEED = 500;
 
 	private static final long serialVersionUID = 1L;
 
@@ -94,7 +94,6 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 
 	public  void window(){
 		 		
-		
 		split.setDividerLocation(800);
 		
 		window.setTitle("Hello, My Name is Home") ;
@@ -146,7 +145,7 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 		   
 		dashboard.add(tabs);	
 		
-		chat = Chat();
+		//chat = new Chat();
 		home.add(chat);
 		chat.setBackground(Color.decode("#4B77BE"));
 		
@@ -331,6 +330,14 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 				System.out.println(e.getMessage());
 			}
 			clock.increment();
+			checkAuto();
+			checkCalen();
+			if((clock.getHour().getValue()==7)&&(clock.getMinute().getValue()==00)){
+				briefCalen();
+			}
+			if((clock.getDay().getValue()==7)&&(clock.getHour().getValue()==23)&&(clock.getMinute().getValue()==50)){
+				//hme.iniAutomate();
+			}
 			updateValues();
 		}
 	}
@@ -383,263 +390,88 @@ public class Graphic extends MapInit implements DbSetter , ActionListener, Runna
 	}
 	
 	
-	String[][][] chatBot2={
-			
-			{
-				{"allume","chauffe","réchauffe"},
-				{"salle de bain","radiateur","chauffage"},
-				{"La température est idéale!","C'est chauffé","C'est allumé","J'ai lancé le radiateur"},
-				{"set radiator on","radiator"},
-			},
-			{
-				{"éteindre","éteins","eteindre","eteins","arrêter","coupe","arretes"},
-				{"salle de bain","radiateur","chauffage"},
-				{"C'est noté!","J'ai arrêté le radiateur","C'est éteins","A votre guise"},
-				{"set radiator off","radiator"},
-			},
-			{
-				{"frigo","manger","refrigerateur","cuisiner","prepares"},
-				{"ouvrir","nourriture","manger"},
-				{"je fais ça!","j'ai pris de la nouriture","Bon appétit Bernard","Attention à votre ligne..."},
-				{"take food","fridge"},
-			},
-			{
-				{"recharger","acheter","courses","charger","remplir"},
-				{"frigo","nourriture","refrigerateur","faire","fais"},
-				{"je fais ça!","Je remplis votre frigo","C'est commandé","Vous devriez acheter autre chose!"},
-				{"faire les courses","fridge"},
-			},
-			{
-				{"aller","avoir","j'ai","suis","bonne","dors","vais"},
-				{"dormir","coucher","nuit","bien"},
-				{"Bonne nuit Bernard, à demain!","Dormez bien","Faites de beaux rêves"},
-				{"sleep","bed"},
-			},
-			{
-				{"salut","bonjour","bien","comment"},
-				{"dormir","coucher","nuit","bien","dormi"},
-				{"Bonjour, Bien dormi?","Avez-vous passé une bonne nuit Bernard?","Bien reposé?"},
-				{"wake up","bed"},
-			},
-			{
-				{"nettoies","nettois","nettoyer","passer"},
-				{"maison","aspirateur","l'aspirateur"},
-				{"Je lance le nettoyage","C'est comme si c'était fait","L'aspirateur est en route attention à vous!"},
-				{"clean the house","vacum"},
-			},
-			{
-				{"café","déca","cafetière"},
-				{"préparer","faire","allumer","fais","allumes","prépares"},
-				{"je fais ça!","Je prépare ça immédiatement","Votre café est prêt"},
-				{"Make cofee", "cofeemaker"}
-			},
-			{
-				{"café","déca","cafetière","machine"},
-				{"recharge","remet","recharger","remettre","remplis"},
-				{"je fais ça!","J'ai remis du café","J'ai rechargé la machine Bernard"},
-				{"fill cofee maker", "cofeemaker"}
-			},
-			{
-				{"TV","télé","télévision","série","film"},
-				{"allumes","allumer","regarder"},
-				{"Regardons la télévision!","C'est allumé","Regardons ça"},
-				{"watch tv", "TV"}
-			},
-			{
-				{"TV","télé","télévision","série","film"},
-				{"éteindre","éteins","eteindre","eteins","arrêter"},
-				{"J'ai arrêté télévision!","C'est éteind","Eteignons ça"},
-				{"turn tv off", "TV"}
-			},
-			//BASIC
-			{
-				{"bonjour","salut","coucou"},
-				{""},
-				{"Bonjour je suis Home, votre assistant personnel","Comment allez vous?","Salut Bernard"},
-				{"none"}
-			},
-			{
-				{"oui","yep","affirmatif","Bien"},
-				{"","et toi?","et vous?"},
-				{"Ravi de l'apprendre !","Excellente nouvelle","Très bien"},
-				{"none"}
-			},
-			{
-				{"non","moyen","mouais","mouai","pas"},
-				{""},
-				{"Je suis désolé de l'apprendre","Désolé Bernard"},
-				{"none"}
-			},
-			{
-				{"Qui"},
-				{"créateur","createur"},
-				{"Et bien mes créateurs sont de talenteux futurs ingénieurs en informatique, le premier Julien est celui qui a fait la jolie "
-						+ "application que je suis. En effet grâce à mon design amélioré, et très avantageux, on ne peut pas dire que "
-						+ "je ne palise pas à tous les autres porgralles de GLP (surtour Ubrain...)\n"
-						+ "Le deuxième c'est Valetin, celui qui m'a donné la parole et qui me permet aujourd'hui d'écouter toutes vos demandes"
-						+ ", même les plus folles... Grâce à lui je suis heurex de pouvoir vous répondre\n"
-						+"Mon dernier est Louis, c'est lui qui m'a donné mon intelligence, ma connaisance, mon savoir, mon humour, mon savoir faire,"
-						+ "mon efficacité et encore plus important, la vie... Grâce à lui je suis qui je suis et pas "
-						+ "seulement un beau programme aux lignes séductrices mais pas bien intelligentes...\n"
-						+ "Voila qui sont mes créateurs, mes dieux, mes parents, la sauce de mes kebabs..."},
-				{"none"}
-			},
-			{
-				{"blague","rire"},
-				{""},
-				{"Il y a 10 types de gens dans le monde. \n Ceux qui parlent binaire, et les autres.",
-					"Comment un développeur tente-t-il de réparer sa voiture lorsqu'elle a un problème ? \nIl sort de la voiture, ferme toutes les fenêtres, retourne dans la voiture, et essaie de redémarrer.",
-					"Il y a deux sortes de gens : ceux qui comprennent la notion de récursivité et ceux qui ne comprennent pas qu’il y a deux sortes de gens : ceux qui comprennent la notion de récursivité et ceux qui ne comprennent pas qu’il y a deux sortes de gens : ceux qui comprennent la notion de récursivité et ceux qui ne comprennent pas qu’il y a deux sortes de gens...",
-					"C'est l'histoire d'un administrateur qui configure ses variables d'environnement, et là......... PATH le chemin !",
-					"Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?"
-						+ "\n Vous connaissez la blague du mec qui a oublié d'augmenter la variable dans sa boucle while ?",
-						"Comment reconnaître un programmeur avec un verre vide ? \n - Le pessimiste dit que le verre est à moitié vide \n - L'optimiste dit que le verre est à moitié plein \n- Le programmeur dit que le verre est deux fois trop grand",
-						"Combien faut-il d'ingénieurs pour changer une ampoule chez Microsoft ? \n Aucun, tout le monde reste dans le noir et Billou décide que c'est le nouveau standard. ",
-						"C'est deux informaticiens qui discutent \n -Fécilitaction pour bon bébé c'est un garçon ou une fille? \n -Oui."
-				},
-				{"none"}
-			},
-			{
-				{"Siri","Google","Cortana"},
-				{"","Now"},
-				{"Désolé mais je ne connais pas ces prototypes"},
-				{"none"}
-			},
-			{
-				{"CIA"},
-				{"","Now"},
-				{"can neither confirm nor deny the existence of the information requested but, hypothetically, if such data were to exist, the subject matter would be classified, and could not be disclosed.",
-				"...",
-				"Si je répondais je devrais vous tuer",
-				"*S'enfuit*"},
-				{"none"}
-			},	
-			{
-				{"Spoil"},
-				{""},
-				{"Glenn est mort","John Snow est mort","En fait depuis le début, c'était un rêve","Bruce Willis est un fantome","Il est son père"},
-				{"none"}
-			},	
-			{
-				{"merci","remercie","excellent"},
-				{""},
-				{"Je vous en prie Bernard","Ce n'est rien","C'est mon travail"},
-				{"none"}
-			},
-			//Default
-			{
-				{"Désolé je ne comprends pas","Pouvez vous mieux vous exprimer ? ","Euh ??", "(Désolé je ne suis pas disponible)"}
-			}
-	};
-		
+	
+	public void checkAuto(){
+		CSVReader reader1 = null;
+		String dir = System.getProperty("user.dir");
+		String csv = dir + "/automation.csv";
+        try {
+      	  reader1 = new CSVReader(new FileReader(csv));
+            String[] readLine1;
+            while ((readLine1 = reader1.readNext()) != null){
+            	if((clock.getMinute().getValue()==Integer.parseInt(readLine1[2]))&&(clock.getHour().getValue()==Integer.parseInt(readLine1[3]))){
+    				((Chat) chat).addText("\nHome : \t"+ "J'ai lancé automatiquement l'opération " +
+    				readLine1[1] + " sur l'objet " + readLine1[0] + 
+            		 " à " + clock.getHour().getValue() + "h" + clock.getMinute().getValue());
+    				((Chat) chat).addText("\n-------------------------");
+    				((Chat) chat).addText("\n");
+    					hme.act(readLine1[1], readLine1[0]);
+        				updateMap();
+            	}
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        } 
+	}
+	
+	public void checkCalen(){
+		CSVReader reader1 = null;
+		String dir = System.getProperty("user.dir");
+		String csv = dir + "/calendar.csv";
+        try {
+      	  reader1 = new CSVReader(new FileReader(csv));
+            String[] readLine1;
+            while ((readLine1 = reader1.readNext()) != null){
+            	if((clock.getMinute().getValue()==(Integer.parseInt(readLine1[1])))&&(clock.getHour().getValue()==Integer.parseInt(readLine1[2]))&&(Integer.parseInt(readLine1[3])==(-1))&&(Integer.parseInt(readLine1[4])==(-1))){
+    				((Chat) chat).addText("\nHome : \t"+ "Attention votre évenement quotidien " + readLine1[0] + " commence dans 10 minutes");
+    				((Chat) chat).addText("\n-------------------------");
+    				((Chat) chat).addText("\n");
+            	}
+            	else if((clock.getMinute().getValue()==(Integer.parseInt(readLine1[1])))&&(clock.getHour().getValue()==Integer.parseInt(readLine1[2]))&&(clock.getDay().getValue()==Integer.parseInt(readLine1[3]))&&(Integer.parseInt(readLine1[4])==(-1))){
+    				((Chat) chat).addText("\nHome : \t"+ "Attention votre évenement hebdomadaire " + readLine1[0] + " commence dans 10 minutes");
+    				((Chat) chat).addText("\n-------------------------");
+    				((Chat) chat).addText("\n");
+            	}
+            	else if((clock.getMinute().getValue()==(Integer.parseInt(readLine1[1])))&&(clock.getHour().getValue()==Integer.parseInt(readLine1[2]))&&(clock.getDay().getValue()==Integer.parseInt(readLine1[3]))&&(clock.getWeek().getValue()==Integer.parseInt(readLine1[4]))){
+    				((Chat) chat).addText("\nHome : \t"+ "Attention vous avez un évenement dans 10 minutes : " +
+    				readLine1[0]);
+    				((Chat) chat).addText("\n-------------------------");
+    				((Chat) chat).addText("\n");
 
-	public JPanel Chat(){
-		JPanel chat = new JPanel();
-		dialog.setEditable(false);
-		dialog.setLineWrap(true);
-		dialog.setWrapStyleWord(true);
-		input.addKeyListener(this);
-		input.setLineWrap(true);
-		input.setWrapStyleWord(true);
-		input.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		chat.setLayout(new GridLayout(2, 1));
-		scrolljp.add(scroll);
-		chat.add(scrolljp);
-		
-		dialog.setBackground(Color.decode("#4B77BE"));
-		dialog.setForeground(Color.WHITE);
-		
-		input.setBackground(Color.decode("#4B77BE"));
-		input.setForeground(Color.WHITE);
-		
-		chat.add(input);	
-		return chat;
+            	}
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        } 
 	}
 	
-	public void keyPressed(KeyEvent e){
-		if(e.getKeyCode()==KeyEvent.VK_ENTER){
-			input.setEditable(false);
-			//-----grab quote-----------
-			String quote=input.getText();
-			input.setText("");
-			addText("Me :\t"+quote);
-			quote.trim();
-			
-			while(
-				quote.charAt(quote.length()-1)=='!' ||
-				quote.charAt(quote.length()-1)=='.' ||
-				quote.charAt(quote.length()-1)=='?'
-			){
-				quote=quote.substring(0,quote.length()-1);
-			}
-			quote.trim();
-			byte response=0;
-			/*
-			0:we're searching through chatBot[][] for matches
-			1:we didn't find anything
-			2:we did find something
-			*/
-			//-----check for matches----
-			int j=0;//which group we're checking
-			while(response==0){
-				if(inArray(quote,chatBot2[j][0])&&(inArray(quote,chatBot2[j][1]))){
-					response=2;
-					int r=(int)Math.floor(Math.random()*chatBot2[(j)][2].length);
-					addText("\nHome : \t"+chatBot2[j][2][r]);
+	public void briefCalen(){
+		CSVReader reader1 = null;
+		String dir = System.getProperty("user.dir");
+		String csv = dir + "/calendar.csv";
+        String info = "";
+        int num = 0;
+        try {
+      	  reader1 = new CSVReader(new FileReader(csv));
+            String[] readLine1;
+            while ((readLine1 = reader1.readNext()) != null){
+            	if(clock.getDay().getValue()==Integer.parseInt(readLine1[3])){
+            		num++;
+            		info += readLine1[0] + " \n";
+            	}
+            	else if((Integer.parseInt(readLine1[3])==(-1))&&((Integer.parseInt(readLine1[4])==(-1)))){
+            		num++;
+            		info += readLine1[0] + " \n";
+            	}
+            }
+            ((Chat) chat).addText("\nHome : \t"+ " Bonjour, il est 7h00. Vous avez " + num + " évenements aujourd'hui. Les voici : "+ info);
+			((Chat) chat).addText("\n-------------------------");
+			((Chat) chat).addText("\n");
+        }catch (IOException e) {
+            e.printStackTrace();
+        } 
+	}
 
-					if(!(chatBot2[j][3][0].equals("none"))){
-						usr.act(chatBot2[j][3][0],chatBot2[j][3][1]);
-					}
-					else{
-						
-					}
-				}
-				j++;
-				if(j==chatBot2.length-1 && response==0){
-					response=1;
-				}
-			}
-			//-----default--------------
-			if(response==1){
-				int r=(int)Math.floor(Math.random()*chatBot2[chatBot2.length-1][0].length);
-				addText("\nHome : \t"+chatBot2[chatBot2.length-1][0][r]);
-			}
-			addText("\n-------------------------");
-			addText("\n");
-			updateMap();
-		}
-	}
 	
-	public void keyReleased(KeyEvent e){
-		if(e.getKeyCode()==KeyEvent.VK_ENTER){
-			input.setEditable(true);
-		}
-	}
 	
-	public void keyTyped(KeyEvent e){}
-	
-	public void addText(String str){
-		dialog.setText(dialog.getText()+str);
-	}
-	
-	public boolean inArray(String in,String[] str){
-		boolean match=false;
-		for(int i=0;i<str.length;i++){
-			//if(str[i].equals(in)){
-			if((in.toLowerCase()).contains(str[i].toLowerCase())){
-				match=true;
-			}
-		}
-		return match;
-	}
 }

@@ -1,14 +1,14 @@
 import java.util.HashMap;
 
+import counters.Clock;
 import gui2.Graphic;
-import objects.Clock;
 import objects.DataStorage;
+import objects.Home;
 import objects.Obj;
 import objects.User;
 
 
-public class Test {
-
+public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		HashMap<String, Obj>objects = new HashMap<String, Obj>();
 		Clock clock = new Clock(); 
@@ -20,23 +20,21 @@ public class Test {
 		objects.get("cofeemaker").setQT(10);
 
 		User usr = User.getInstance();
+		Home hme = Home.getInstance();
 		Graphic gr = new Graphic();
 		
-		ds.giveMap(usr);
+		ds.giveClock(hme);
 		ds.giveClock(usr);
-		ds.giveMap(gr);
 		ds.giveClock(gr);
-		
-		gr.window();
-	
-		/*boolean var = true;
-		while(var){
-			Thread.sleep(1000);
-				System.out.println(usr.test());
-				if(usr.test()=="true"){
-					System.out.println("it's ok");
-				}
-		}*/
-	}
 
+		
+		ds.giveMap(usr);
+		ds.giveMap(hme);
+		ds.giveMap(gr);
+		
+		hme.iniAutomate();
+		clock.set(0, 1, 1, 2);
+	
+		gr.window();
+	}
 }     
