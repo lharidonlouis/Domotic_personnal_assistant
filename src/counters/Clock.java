@@ -1,6 +1,6 @@
 package counters;
 
-public class Clock implements Runnable{
+public class Clock implements Runnable {
 	private CyclicCounter week = new CyclicCounter(1, 4, 1);
 	private CyclicCounter day = new CyclicCounter(1, 7, 1);
 	private CyclicCounter hour = new CyclicCounter(0, 23, 0);
@@ -9,15 +9,14 @@ public class Clock implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 
-
 	public void increment() {
-			for(int i = 0; i<10;i++){
-				minute.increment();
+		for (int i = 0; i < 10; i++) {
+			minute.increment();
 			if (minute.getValue() == 0) {
 				hour.increment();
-				if(hour.getValue() == 0){
+				if (hour.getValue() == 0) {
 					day.increment();
-					if(day.getValue() == 1){
+					if (day.getValue() == 1) {
 						week.increment();
 					}
 				}
@@ -26,13 +25,13 @@ public class Clock implements Runnable{
 	}
 
 	public void decrement() {
-		for(int i = 0; i<10;i++){
+		for (int i = 0; i < 10; i++) {
 			minute.decrement();
 			if (minute.getValue() == 59) {
 				hour.decrement();
-				if(hour.getValue() == 23){
+				if (hour.getValue() == 23) {
 					day.decrement();
-					if(day.getValue() == 7){
+					if (day.getValue() == 7) {
 						week.decrement();
 					}
 				}
@@ -40,12 +39,14 @@ public class Clock implements Runnable{
 		}
 	}
 
-	public CyclicCounter getWeek(){
+	public CyclicCounter getWeek() {
 		return week;
 	}
-	public CyclicCounter getDay(){
+
+	public CyclicCounter getDay() {
 		return day;
 	}
+
 	public CyclicCounter getHour() {
 		return hour;
 	}
@@ -74,63 +75,68 @@ public class Clock implements Runnable{
 		hour.setValue(0);
 		minute.setValue(0);
 	}
-	
-	public void set(int m, int h, int d, int w){
+
+	public void set(int m, int h, int d, int w) {
 		week.setValue(w);
 		day.setValue(d);
 		hour.setValue(h);
 		minute.setValue(m);
 	}
-	
-	public boolean inrange(int delta, Clock base){
-		if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+
+	public boolean inrange(int delta, Clock base) {
+		if ((getMinute().getValue() == (base.getMinute().getValue()))
+				&& (getHour().getValue() == (base.getHour().getValue()))) {
 			return true;
 		}
-		for(int i=0; i<(delta/10);i++){
+		for (int i = 0; i < (delta / 10); i++) {
 			base.increment();
-			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+			if ((getMinute().getValue() == (base.getMinute().getValue()))
+					&& (getHour().getValue() == (base.getHour().getValue()))) {
 				return true;
 			}
 		}
-		for(int i=0;i<((2*delta)/10);i++){
+		for (int i = 0; i < ((2 * delta) / 10); i++) {
 			base.decrement();
-			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+			if ((getMinute().getValue() == (base.getMinute().getValue()))
+					&& (getHour().getValue() == (base.getHour().getValue()))) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public int inrangeOf(int delta, Clock base){
+	public int inrangeOf(int delta, Clock base) {
 		int count = 0;
-		if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+		if ((getMinute().getValue() == (base.getMinute().getValue()))
+				&& (getHour().getValue() == (base.getHour().getValue()))) {
 			return count;
 		}
 
-		for(int i=0; i<(delta/10);i++){
+		for (int i = 0; i < (delta / 10); i++) {
 			base.increment();
 			count++;
-			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+			if ((getMinute().getValue() == (base.getMinute().getValue()))
+					&& (getHour().getValue() == (base.getHour().getValue()))) {
 				return count;
 			}
 		}
-		for(int i=0;i<((2*delta)/10);i++){
+		for (int i = 0; i < ((2 * delta) / 10); i++) {
 			base.decrement();
 			count--;
-			if((getMinute().getValue() == (base.getMinute().getValue()))&&(getHour().getValue() == (base.getHour().getValue()))){
+			if ((getMinute().getValue() == (base.getMinute().getValue()))
+					&& (getHour().getValue() == (base.getHour().getValue()))) {
 				return count;
 			}
 		}
 		return count;
 	}
-	
-	
+
 	@Override
 	public void run() {
 		boolean run = true;
-		while(run){
-		increment();	
-		//System.out.println(toString());
+		while (run) {
+			increment();
+			// System.out.println(toString());
 		}
 	}
 
