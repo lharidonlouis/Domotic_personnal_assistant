@@ -7,22 +7,22 @@
 - [English](https://github.com/lharidonlouis/Domotic_personnal_assistant#english)
 - [Changelog](https://github.com/lharidonlouis/Domotic_personnal_assistant#changelog)
 
-##Français
+## Français
 
-###Présentation du projet
+### Présentation du projet
 
-####Contexte
+#### Contexte
 
 Nous étions tous intéressés par ce projet car il est nouveau et innovant. En effet, il évoque le domaine de la domotique, un sujet intéressant et suffisamment ouvert. Nous avions déjà un certain nombre d’idées et d’ambitions ce qui nous a poussé à placer ce sujet en premier choix. 
 
-###Le projet
+### Le projet
 
 Ce projet consiste à créer un assistant personnel dans une maison entièrement connectée (domotique) avec son utilisateur. En effet ce dernier communique avec elle par le biais d'interactions (grâce à une interface utilisateur/assistant). Cet assistant est capable de proposer des actions comme par exemple passer l’aspirateur, éteindre des lampes ou la télé. Etant connecté à l’ensemble de la maison, il permet de reporter l’état des objets, tout problème ou information de ce dernier afin d’en informer son utilisateur. L’assistant a donc pour but d’améliorer le quotidien, notamment en proposant des actions comme souhaiter un anniversaire avec un message prédéfini, ayant auparavant vérifié le calendrier. Même des petites actions comme les informations météorologiques ou les réunions à venir parviennent à l’utilisateur dès son réveil afin d’organiser au mieux sa journée et ainsi de gagner en temps et en l’efficacité. 
 
 L’assistant personnel est donc un véritable outil, très prometteur et avec un nombre indéfini d’actions possibles.
 
 
-####L’organisation	
+#### L’organisation	
 
 L’équipe est composée de 3 personnes : Louis (CMI), Valentin (MI) et Julien (MI). 
 
@@ -33,7 +33,7 @@ Calendrier du projet :
 - [ ] 20 Mai 2017: rendu final du projet (projet + rapport + diaporama)
 - [ ] 22-23 Mai 2017: soutenance orale du projet 
 
-####Environnement de travail
+#### Environnement de travail
 
 Pour le projet nous utiliserons différents logiciels :
 
@@ -43,7 +43,7 @@ Pour le projet nous utiliserons différents logiciels :
 - Dropbox pour le travail collaboratif
 - Git pour le développement collaboratif
 
-###Livraisons attendues
+### Livraisons attendues
 Pour ce projet, les documents suivants seront fournis :
 
 - Fichier Exécutable 
@@ -56,9 +56,9 @@ Pour ce projet, les documents suivants seront fournis :
 		- Comment les utiliser
 		- Les options de personnalisation
 
-###Objectif du projet et spécifications
+### Objectif du projet et spécifications
 
-####Fonctionnalités du programme
+#### Fonctionnalités du programme
 
 Notre programme consiste donc en la création d’un assistant personnel permettant au propriétaire de la maison de gérer ses diverses interactions. Pour cela nous auront besoin de diverses fonctionnalités.
 
@@ -120,7 +120,7 @@ Notre programme consiste donc en la création d’un assistant personnel permett
 		- Gestion des commandes de l’utilisateur
 		- Gestion de la météo (optionnel)
 
-####Interface
+#### Interface
 
 L’interface de notre logiciel doit comprendre un certains nombres de fonctionnalités afin de permettre la correcte utilisation des fonctionnalités vues précédemment.
 
@@ -138,22 +138,22 @@ L’interface de notre logiciel doit comprendre un certains nombres de fonctionn
 	- Gestion des actions de l’utilisateur
 	- Possibilité d’ajouter des objets connectés
 
-##English
+## English
 
 
-###Project presentation
+### Project presentation
 
-####Context
+#### Context
 
 We were all interested about this project because it's new and innovating. Indeed, it is about the automation domain, a very interesting open subject. We all had a certain number of ideas and hopes  for this project, which pushed us to work put in in first choice.
 
-###The project
+### The project
 
 This project is about creating a personal assistant in an entirely connected house with its user. The user will communicate with her via interactions (with a user/assistant interface). This assistant is able to propose actions such as clean the house, turn off the light or the TV. Being connected with the entire house, it can report object's status, every problem or information about this last to inform its user. The assistant has for goal to improve the life, by proposing actions such as wish a happy birthday with personalized messages, checking the calendar. Even small actions such as meteorologic datas, or today planning are coming to the user at his wake up to allow him to organize his day the best way possible and to make him win in efficiency.
 
 The personal assistant is a really too, very promising and undefined number of possible actions.
 
-####The organisation
+#### The organisation
 
 We are 3 members in the team : Louis (CMI), Valentin (MI) et Julien (MI). 
 
@@ -164,7 +164,7 @@ Project calendar :
 - [ ] 2017, May the 20th : final return of the project (project + report + slides)
 - [ ] 2017, May the 23rd : Oral
 
-####Environnement de travail
+#### Environnement de travail
 
 For this project we used different softwares:
 
@@ -174,7 +174,7 @@ For this project we used different softwares:
 - Dropbox for collaborative work
 - Git for collaborative devloppment 
 
-###Waited delivery
+### Waited delivery
 For this project : the following documents are waited :
 
 - Executable file
@@ -187,9 +187,9 @@ For this project : the following documents are waited :
 		- How to use them
 		- The personalization options
 
-###Project objectives and specifications
+### Project objectives and specifications
 
-####Software's functionalities
+#### Software's functionalities
 
 Our project consist in an personal assistant creation allowing the house's owner to handle diverses interactions. For this, we will need some functionalities:
 
@@ -251,7 +251,7 @@ Our project consist in an personal assistant creation allowing the house's owner
 		- User's command management
 		- Weather management (optional)
 
-####Interface
+#### Interface
 
 Our software interface has to handle a certain number of functionalities to allow the good working of the previous functionalities.
 
@@ -269,7 +269,7 @@ Our software interface has to handle a certain number of functionalities to allo
 	- User's action management
 	- Adding new connected objects possibility
 
-##Changelog
+## Changelog
 - 23/01/2017 - 11h30 : GitHub creation
 - 23/01/2017 - 12h00 : Eclipse project creation
 - 23/01/2017 - 21h30 : adding of README.txt
